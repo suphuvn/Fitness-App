@@ -172,8 +172,8 @@ body {
 }
 
 .welcome_container {
-    margin: 30px 20px 30px 20px;
-    height: 200px;
+    margin: 30px 20px 20px 20px;
+    height: 220px;
     width: 60%;
     border-radius: 20px;
     background-color: #706DF9;
@@ -211,7 +211,7 @@ body {
 .workouts_container {
     display: block;
     width: 60%;
-    height: 50%;
+    height: 47%;
     border-radius: 20px;
     background-color: white;
     border: 1px solid grey;
@@ -220,6 +220,7 @@ body {
 
 .muscle_engagement_container {
     float: right;
+    vertical-align: bottom;
     height: 100%;
     width: 33.5%;
     border-radius: 20px;
@@ -234,3 +235,65 @@ body {
     margin: 20px;
     padding-top: 20px;
 }
+
+.subtitle {
+    color: white;
+    margin: 20px;
+    margin-top: -15px;
+}
+
+.box {
+    display: inline-block;
+    flex-grow: 1;
+    height: 100px;
+    width: 175px;
+    background-color: #B7B6FC;
+    opacity: 100%;
+    border-radius: 20px;
+    margin-left: 20px;
+}
+
+.people {
+    float:right;
+    height: 150px;
+    width: auto;
+    margin-top: 50px;
+}
+
+.box_container {
+    display: flex;
+    width: 70%;
+    align-items: stretch;
+}
+
+.box p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.heading {
+    display: flex;    
+    justify-content: space-between;
+}
+
+select {
+    width: 150px;
+    padding: 12px;
+    margin-right: 30px;
+    font-family: "Roboto";
+    font-size: 13px;
+    color: #525252;
+    border: 0 !important;
+    background-color: #f3f3f3;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+      background-size: .6em;
+      background-position: calc(100% - 1.3em) center;
+      background-repeat: no-repeat;
+  }
+  select::-ms-expand {
+      display: none;
+  }

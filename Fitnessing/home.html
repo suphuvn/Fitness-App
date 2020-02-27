@@ -55,9 +55,30 @@
     <div class="main">
         <div class = "muscle_engagement_container"></div>
         <div class = "welcome_container">
+            <img class="people" src="Images/fitness-people.png">
             <p class="welcome_title">Welcome back, <b>Kumiko!</b></p>
+            <p class="subtitle">This is your progress since Jan 1, 2020:</p>
+            <div class="box_container">
+                <div class = box>
+                    <p><b>28</b><br>workouts<br>completed</p>
+                </div>            
+                <div class = box>
+                    <p><b>125 lb</b><br>current<br>weight</p>
+                </div>
+                <div class = box>
+                    <p><b>300 h</b><br>worked<br>out</p>
+                </div>
+            </div>
         </div>
-        <p class = "title">Previous Workout(s)</p>
+
+        <div class="heading">
+            <p class = "title">Previous Workout(s)</p>
+            <select name="select_musclegroup" aria-invalid="false">
+                <option value="Lower">Lower</option>
+                <option value="Upper">Upper</option>
+            </select>
+        </div>
+        
         <div class="container">
             <div class = "prev_workout_container "></div>
             <div class = "prev_workout_container pad"></div>
