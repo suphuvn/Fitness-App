@@ -188,12 +188,19 @@ body {
 }
 
 .prev_workout_container {
-    display: inline-block;
-    height: 100px;
+    height: 90px;
     flex-grow: 1;
     background-color: #4C49EA;
     border-radius: 20px;
     border: 1px solid grey;
+}
+
+.prev_workout_container:hover {
+    background-color: #fff;
+}
+
+.prev_workout_container:hover .subtitle2, .prev_workout_container:hover .desc {
+    color: #4C49EA;
 }
 
 .pad {
@@ -297,3 +304,28 @@ select {
   select::-ms-expand {
       display: none;
   }
+
+.date {
+    display: block;
+    float: left;
+    width:60px;
+    height: 70px;
+    background-color: #B7B6FC;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+}
+
+.subtitle2 {
+    text-align: top !important;
+    display: block;
+    color: white;
+    font-weight: 500;
+    margin-top: 25px;
+}
+
+.desc {
+    color: white;
+    margin-top: -10px;
+}
