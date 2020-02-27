@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     background-color: #FDFDFD;
     font-family: 'Roboto';
@@ -161,4 +165,72 @@ body {
     height: 135px;
     opacity: 1;
     transform: translateY(0);
+}
+
+.main {
+    height: 100vh;
+}
+
+.welcome_container {
+    margin: 30px 20px 30px 20px;
+    height: 200px;
+    width: 60%;
+    border-radius: 20px;
+    background-color: #706DF9;
+}
+
+.container {
+    display: flex;
+    overflow: hidden;
+    margin: 20px;
+    width: 60%;
+    align-items: stretch;
+}
+
+.prev_workout_container {
+    display: inline-block;
+    height: 100px;
+    flex-grow: 1;
+    background-color: #4C49EA;
+    border-radius: 20px;
+    border: 1px solid grey;
+}
+
+.pad {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.title {
+    margin: 10px 0 5px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #525252;
+}
+
+.workouts_container {
+    display: block;
+    width: 60%;
+    height: 50%;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 20px;
+}
+
+.muscle_engagement_container {
+    float: right;
+    height: 100%;
+    width: 33.5%;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid grey;
+    margin: 0 20px 20px 20px ;
+}
+
+.welcome_title {
+    color: white;
+    font-size: 28px;
+    margin: 20px;
+    padding-top: 20px;
 }
