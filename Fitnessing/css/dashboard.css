@@ -334,3 +334,129 @@ select {
     color: #4C49EA;
     padding: 10px 30px 0 0;
 }
+
+.section {
+    display: block;
+    width: 800px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+}
+
+.workout_description {
+    display: inline-block;
+    width: 300px;
+}
+
+.workouts_title {
+    font-size: 28px;
+    margin: 20px;
+    padding-top: 20px;
+    color: #525252;
+}
+
+.workout_name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4C49EA;
+    margin: 0;
+}
+
+.workout_date {
+    font-size: 20px;
+    color: #4C49EA;
+    margin: 0;
+}
+
+.workout_image {
+    max-height: 220px;
+    vertical-align: middle;
+}
+
+.workout_image_container {
+    text-align: center;
+    display: inline-block;
+    line-height: 280px;
+    height: 280px;
+}
+
+.start_button {
+    color: white;
+    background-image: linear-gradient(#4C49EA, #7f82f8);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.workout_count {
+    text-align: center;
+    color: #4C49EA;
+    margin-top: 30px;
+}
+
+.workout_info {
+    display: inline-block;
+    height: 220px;
+}
+
+.workout_graph_container {
+    display: inline-block;
+    height: 220px;
+    width: 450px;
+    text-align: right;
+}
+
+.workout_graph {
+    max-height: 220px;
+    vertical-align: middle;
+}
+
+.filter_container {
+    float: right;
+    vertical-align: bottom;
+    width: 25%;
+    border-radius: 20px;
+    background-color: #4C49EA;
+    border: 1px solid #ccc;
+    margin: 0 12% 20px 20px;
+    padding: 10px 0 10px 30px;
+}
+
+.filter_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.filter_group_text {
+    font-size: 16px;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.filter_button_container {
+    margin: 30px 0px;
+}
+
+.filter_button {
+    display: inline-block;
+    color: white;
+    background-color: #A6A6F5;
+    text-decoration: none;
+    padding: 15px 0;
+    width: 25%;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0 5% 15px 0;
+}
+
+.filter_button.selected {
+    color: #4C49EA;
+    background-color: white;
+}
