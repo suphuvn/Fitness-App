@@ -224,7 +224,7 @@ body {
     border-radius: 20px;
     background-color: white;
     border: 1px solid #ccc;
-    margin: 20px;
+    margin: 30px 20px 30px 20px;
 }
 
 .muscle_engagement_container {
@@ -357,9 +357,8 @@ select {
 }
 
 .workouts_title {
-    font-size: 28px;
-    margin: 20px;
-    padding-top: 20px;
+    font-size: 24px;
+    margin: 30px;
     color: #525252;
 }
 
@@ -421,14 +420,17 @@ select {
 }
 
 .filter_container {
-    float: right;
-    vertical-align: bottom;
-    width: 25%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 27.5%;
+    height: 75%;
     border-radius: 20px;
     background-color: #4C49EA;
     border: 1px solid #ccc;
-    margin: 0 12% 20px 20px;
-    padding: 10px 0 10px 30px;
+    margin: 160px 40px 20px 20px;
+    padding: 10px 0 10px 20px;
+    text-align: center;
 }
 
 .filter_title {
@@ -436,6 +438,7 @@ select {
     font-weight: bold;
     color: white;
     margin-bottom: 5px;
+    text-align: left;
 }
 
 .filter_group_text {
@@ -443,27 +446,50 @@ select {
     color: white;
     padding: 0;
     margin: 0;
+    text-align:left;
 }
 
 .filter_button_container {
     margin: 30px 0px;
+    text-align: center;
 }
 
 .filter_button {
     display: inline-block;
     color: white;
     background-color: #A6A6F5;
-    text-decoration: none;
     padding: 15px 0;
     width: 25%;
     text-align: center;
     border-radius: 8px;
     margin: 0 5% 15px 0;
+    font-family: "Roboto";
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.apply_button {
+    display:inline-block;
+    color: #6966F6;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    padding: 15px 0;
+    width: 25%;
+    border-radius: 8px;
+    margin-left: -15px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: 60px;
+    cursor: pointer;
 }
 
 .filter_button.selected {
     color: #4C49EA;
     background-color: white;
+}
 
 .week {
     font-size: 14px;

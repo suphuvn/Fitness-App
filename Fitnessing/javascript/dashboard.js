@@ -1,4 +1,5 @@
 /*eslint-env browser*/
+var filters = document.querySelectorAll(".filter_button");
 
 function setBackground(element) {
     "use strict";
@@ -34,5 +35,18 @@ function getURL() {
         document.querySelector(".home").src = "images/Home Icon - White.svg";
     }
 }
+
+function toggleSelected(event, element) {
+    if (element.classList.contains("selected")) {
+        element.classList.remove("selected");
+    } else {
+        element.classList.add("selected");
+    }
+}
+
+
+filters.forEach(function (filter) {
+    filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
+});
 
 getURL();
