@@ -53,7 +53,34 @@
     </div>
 
     <div class="main">
-        <div class = "muscle_engagement_container"></div>
+        <div class = "muscle_engagement_container">
+            <p class="title margin">Muscle Engagement</p>
+            <p class="week">Week of Feb 20 - 27</p>
+            <p class="muscle">Quads</p>
+            <progress id="Quads" value="5" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Glutes</p>
+            <progress id="Glutes" value="6" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Calves</p>
+            <progress id="Calves" value="2" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Biceps</p>
+            <progress id="Biceps" value="3" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Triceps</p>
+            <progress id="Triceps" value="3" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Shoulders</p>
+            <progress id="Shoulders" value="2" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Back</p>
+            <progress id="Back" value="4" max="7"> 32% </progress>
+            <br>
+            <p class="muscle">Abs</p>
+            <progress id="Abs" value="3" max="7"> 32% </progress>
+            <br>
+        </div>
         <div class = "welcome_container">
             <img class="people" src="Images/fitness-people.png">
             <p class="welcome_title">Welcome back, <b>Kumiko!</b></p>
@@ -74,6 +101,7 @@
         <div class="heading">
             <p class = "title">Previous Workout(s)</p>
             <select name="select_musclegroup" aria-invalid="false">
+                <option value="All">All</option>
                 <option value="Lower">Lower</option>
                 <option value="Upper">Upper</option>
             </select>
@@ -107,7 +135,26 @@
             <p class = "title">My Workouts</p>
             <a href="workouts.html">Show all</a>
         </div>
-        <div class = "workouts_container"></div>
+        <div class = "workouts_container">
+            <div class="measurements">
+                <p>5k</p>
+                <p>3k</p>
+                <p>1k</p>
+                <p>0</p>
+            </div>
+            <div class=graph_container>
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+                <div class="bar4"></div>
+                <div class="bar5"></div>
+            </div>
+            <p class="muscle_group">Chest & Biceps</p>
+            <p class="day">Tues, Feb 25</p>
+            <img class="diagram" src="Images/Muscles.svg">
+            <a class="start" href="currentworkout.html">START</a>
+            <p class="completed"><b>5</b><br>times<br>completed</p>
+        </div>
     </div>
     
     <script type="text/javascript" src="javascript/dashboard.js"></script>
