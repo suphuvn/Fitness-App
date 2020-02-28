@@ -182,8 +182,8 @@ body {
 .container {
     display: flex;
     overflow: hidden;
-    margin: 20px;
-    width: 60%;
+    margin: 10px;
+    width: 61%;
     align-items: stretch;
 }
 
@@ -192,21 +192,20 @@ body {
     flex-grow: 1;
     background-color: #4C49EA;
     border-radius: 20px;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
+    margin: 10px;
 }
 
 .prev_workout_container:hover {
     background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(76, 73, 234, 0.5);
 }
 
 .prev_workout_container:hover .subtitle2, .prev_workout_container:hover .desc {
     color: #4C49EA;
 }
 
-.pad {
-    margin-left: 20px;
-    margin-right: 20px;
-}
+
 
 .title {
     margin: 10px 0 5px 20px;
@@ -221,7 +220,7 @@ body {
     height: 47%;
     border-radius: 20px;
     background-color: white;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     margin: 20px;
 }
 
@@ -232,7 +231,7 @@ body {
     width: 33.5%;
     border-radius: 20px;
     background-color: white;
-    border: 1px solid grey;
+    border: 1px solid #ccc;
     margin: 0 20px 20px 20px ;
 }
 
@@ -314,7 +313,7 @@ select {
     border-radius: 10px;
     text-align: center;
     color: white;
-    margin: 10px;
+    margin: 10px 5px 10px 10px;
 }
 
 .subtitle2 {
@@ -322,10 +321,16 @@ select {
     display: block;
     color: white;
     font-weight: 500;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 .desc {
     color: white;
     margin-top: -10px;
+}
+
+.heading a {
+    text-decoration: none;
+    color: #4C49EA;
+    padding: 10px 30px 0 0;
 }
