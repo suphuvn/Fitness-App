@@ -20,7 +20,7 @@ function getURL() {
         document.querySelector(".home").src = "images/Home Icon.svg";
         document.querySelector(".workouts").src = "images/Weight Icon.svg";
         document.querySelector(".stats").src = "images/Bar Chart Icon.svg";
-    } else if (pathname.endsWith("/workouts.html")) {
+    } else if (pathname.endsWith("/workouts.html") || pathname.endsWith("/currentworkout.html") || pathname.endsWith("/createworkout.html")) {
         curr = document.querySelector(".link2");
         setBackground(curr);
         document.querySelector(".workouts").src = "images/Weight Icon - Purple.svg";

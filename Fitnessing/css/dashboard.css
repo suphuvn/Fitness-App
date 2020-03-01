@@ -478,15 +478,11 @@ progress[value]::-webkit-progress-value {
 /* ----------------------- Filter Container ----------------------- */
 .filter_container {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 27.5%;
-    height: 75%;
+    height: 78%;
     border-radius: 20px;
     background-image: linear-gradient(#4C49EA, #706DF9);
     border: 1px solid #ccc;
-    margin: 160px 40px 20px 20px;
-    padding: 10px 0 10px 20px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -507,7 +503,6 @@ progress[value]::-webkit-progress-value {
 }
 
 .filter_button_container {
-    margin: 30px 0px;
     text-align: center;
 }
 
@@ -515,11 +510,10 @@ progress[value]::-webkit-progress-value {
     display: inline-block;
     color: white;
     background-color: #A6A6F5;
-    padding: 15px 0;
-    width: 25%;
+    width: 100px;
+    padding: 12px 0;
     text-align: center;
     border-radius: 8px;
-    margin: 0 5% 15px 0;
     font-family: "Roboto";
     font-size: 14px;
     cursor: pointer;
@@ -532,14 +526,11 @@ progress[value]::-webkit-progress-value {
     text-align: center;
     text-decoration: none;
     border: none;
-    padding: 15px 0;
-    width: 25%;
+    padding: 15px 30px;
     border-radius: 8px;
-    margin-left: -15px;
     font-family: "Roboto";
     font-weight: 500;
     font-size: 14px;
-    margin-top: 60px;
     cursor: pointer;
 }
 
