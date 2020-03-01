@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <link href="reset.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,27 +34,178 @@
         </div>
     </div>
     
-    <div class="header">
-        <div class="searchContainer">
-            <i class="fa fa-search searchIcon"></i>
-            <input class="searchBox" type="text" placeholder="Search">
+    <div class="container-fluid main">
+        <div class="row mx-4 mt-4">
+            <div class="col-sm-8">
+                <div class="searchContainer">
+                    <i class="fa fa-search searchIcon"></i>
+                    <input class="searchBox" type="text" placeholder="Search">
+                </div>
+            </div>
+            
+            <div class="col-sm-4 text-right pt-2">
+                <a href="settings.html"><img class="settings" src="Images/Settings%20Icon.svg"></a>
+            
+                <div class="profile align-middle">
+                    <img class="userIcon" src="Images/Placeholder%20User%20Icon.png">
+                    <button class="name">Kumiko</button>
+                    <img class="dropdownIcon" src="Images/Dropdown%20Icon.svg">
+                    <div class="dropdown-content">
+                      <a href="#">Link 1</a>
+                      <a href="#">Link 2</a>
+                      <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="row mx-0 pt-4 pl-4">
+            <div class="col-sm-12">
+                <p class="workouts_title m-0"><b>My Workouts</b></p>
+            </div>
+        </div>
+        <div class="row p-4">
+            <!-- Workouts column -->
+            <div class="col-sm-8">
+                <!-- Workout Container -->
+                <div class="row workouts_container mx-0 mb-4">
+                    <div class="col-sm-5">
+                        <div class="row p-3">
+                            <div class="col-sm-12">
+                                <p class="muscle_group mb-2">Chest & Biceps</p>
+                                <p class="day mb-0">Tues, Feb 25</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <img class="diagram" src="Images/Muscles.svg">
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="start" href="currentworkout.html">START</a>
+                                <p class="completed"><b>3</b><br>times<br>completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Graph -->
+                    <div class="col-sm-6 p-4">
+                        <div class="row graph_container">
+                            <div class="col-sm-4 bar1"></div>
+                            <div class="col-sm-4 bar2"></div>
+                            <div class="col-sm-4 bar5"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="measurements">
+                            <p>5k</p>
+                            <p>3k</p>
+                            <p>1k</p>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Container -->
+                <div class="row workouts_container mx-0 mb-4">
+                    <div class="col-sm-5">
+                        <div class="row p-3">
+                            <div class="col-sm-12">
+                                <p class="muscle_group mb-2">Back & Biceps</p>
+                                <p class="day mb-0">Tues, Feb 25</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <img class="diagram" src="Images/Muscles.svg">
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="start" href="currentworkout.html">START</a>
+                                <p class="completed"><b>0</b><br>times<br>completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Graph -->
+                    <div class="col-sm-6 p-4">
+                        <div class="row graph_container">
+
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="measurements">
+                            <p>5k</p>
+                            <p>3k</p>
+                            <p>1k</p>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Container -->
+                <div class="row workouts_container mx-0 mb-4">
+                    <div class="col-sm-5">
+                        <div class="row p-3">
+                            <div class="col-sm-12">
+                                <p class="muscle_group mb-2">Legs & Abs</p>
+                                <p class="day mb-0">Tues, Feb 25</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <img class="diagram" src="Images/Muscles.svg">
+                            </div>
+                            <div class="col-sm-6">
+                                <a class="start" href="currentworkout.html">START</a>
+                                <p class="completed"><b>6</b><br>times<br>completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Graph -->
+                    <div class="col-sm-6 p-4">
+                        <div class="row graph_container">
+                            <div class="col-sm-2 bar1"></div>
+                            <div class="col-sm-2 bar2"></div>
+                            <div class="col-sm-2 bar3"></div>
+                            <div class="col-sm-2 bar4"></div>
+                            <div class="col-sm-2 bar2"></div>
+                            <div class="col-sm-2 bar5"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="measurements">
+                            <p>5k</p>
+                            <p>3k</p>
+                            <p>1k</p>
+                            <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="filter_container">
+                    <p class="filter_title">Filter</p>
+                    <p class="filter_group_text">Muscle Group</p>
         
-        <a href="settings.html"><img class="settings" src="Images/Settings%20Icon.svg"></a>
-        
-        <div class="profile">
-            <img class="userIcon" src="Images/Placeholder%20User%20Icon.png">
-            <button class="name">Kumiko</button>
-            <img class="dropdownIcon" src="Images/Dropdown%20Icon.svg">
-            <div class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+                    <div class="filter_button_container">
+                        <button class="filter_button selected">Abs</button>
+                        <button class="filter_button ">Back</button>                
+                        <button class="filter_button selected">Biceps</button>
+                        <button class="filter_button">Calves</button>                
+                        <button class="filter_button">Chest</button>
+                        <button class="filter_button">Forearms</button>
+                        <button class="filter_button">Glutes</button>
+                        <button class="filter_button">Hamstrings</button>
+                        <button class="filter_button">Quadriceps</button>
+                        <button class="filter_button">Shoulders</button>
+                        <button class="filter_button">Traps</button>
+                        <button class="filter_button">Triceps</button>
+                        <button class="filter_button">Upper Back</button>
+                    </div>
+                    <button class="apply_button">APPLY</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="main">
+    <!-- <div class="main">
         <p class="workouts_title"><b>My Workouts</b></p>
 
         <div class="filter_container">
@@ -77,9 +229,9 @@
             </div>
             <button class="apply_button">APPLY</button>
 
-        </div>
+        </div> -->
 
-        <div class = "workouts_container">
+        <!-- <div class = "workouts_container">
             <div class="measurements">
                 <p>5k</p>
                 <p>3k</p>
@@ -135,9 +287,10 @@
             <img class="diagram" src="Images/Muscles.svg">
             <a class="start" href="currentworkout.html">START</a>
             <p class="completed"><b>3</b><br>times<br>completed</p>
-        </div>
+        </div> -->
     </div>
     
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="javascript/dashboard.js"></script>
 </body>
    
