@@ -1,5 +1,6 @@
 /*eslint-env browser*/
 var filters = document.querySelectorAll(".filter_button");
+var complete_button = document.querySelectorAll(".complete");
 
 function setBackground(element) {
     "use strict";
@@ -44,9 +45,25 @@ function toggleSelected(event, element) {
     }
 }
 
+function markComplete(event, buttonParent) {
+    var sets = buttonParent.querySelectorAll(".set");
+    var i;
+    for (i = 0; i < sets.length; ++i) {
+        var check = sets[i].querySelector(".check");
+        check.style.backgroundImage = "url('https://upload.wikimedia.org/wikipedia/commons/2/27/White_check.svg')"
+        check.style.backgroundRepeat = "no-repeat"
+        check.style.backgroundSize = "contain"
+        sets[i].style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+      }
+}
+
 
 filters.forEach(function (filter) {
-    filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
+    filter.addEventListener("click", function () { markComplete(event, filter); }, true);
+});
+
+complete_button.forEach(function (button) {
+    button.addEventListener("click", function () { markComplete(event, button.parentNode.parentNode.parentNode); }, true);
 });
 
 getURL();

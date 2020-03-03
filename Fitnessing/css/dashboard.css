@@ -564,7 +564,7 @@ progress[value]::-webkit-progress-value {
 
 /* ----------------------- Exercise Container ----------------------- */
 .exercise_container {
-    height: 75vh;
+    height: 80vh;
     width: 100%;
     border-radius: 20px;
     text-align: center;
@@ -631,6 +631,7 @@ progress[value]::-webkit-progress-value {
     text-align: center;
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
 }
 
 .set:hover {
@@ -667,4 +668,9 @@ progress[value]::-webkit-progress-value {
     position: absolute;
     width: inherit;
     bottom: 0;
+}
+
+.check {
+    width: 20px;
+    height: 20px;
 }
