@@ -568,6 +568,8 @@ progress[value]::-webkit-progress-value {
     width: 100%;
     border-radius: 20px;
     text-align: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .color1 {
