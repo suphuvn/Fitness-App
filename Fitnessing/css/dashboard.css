@@ -632,6 +632,7 @@ progress[value]::-webkit-progress-value {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .set:hover {
@@ -646,7 +647,7 @@ progress[value]::-webkit-progress-value {
 }
 
 .number {
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 25px;
     font-weight: bold;
 }
