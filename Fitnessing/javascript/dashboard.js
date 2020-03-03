@@ -74,7 +74,7 @@ function completed (event, set) {
 
 
 filters.forEach(function (filter) {
-    filter.addEventListener("click", function () { markComplete(event, filter); }, true);
+    filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
 });
 
 complete_button.forEach(function (button) {
