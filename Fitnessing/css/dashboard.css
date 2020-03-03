@@ -564,7 +564,7 @@ progress[value]::-webkit-progress-value {
 
 /* ----------------------- Exercise Container ----------------------- */
 .exercise_container {
-    height: 80vh;
+    height: 85vh;
     width: 100%;
     border-radius: 20px;
     text-align: center;
