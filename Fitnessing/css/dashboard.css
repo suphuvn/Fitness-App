@@ -677,3 +677,164 @@ progress[value]::-webkit-progress-value {
     width: 20px;
     height: 20px;
 }
+
+/* ----------------------- Create Workout Page ----------------------- */
+/* ----------------------- Library ----------------------- */
+.library_container {
+    width: 100%;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.workout_container {
+    width: 100%;
+    height: 85vh;
+    border-radius: 20px;
+    background-image: linear-gradient(180deg, #706DF9 0%, #4C49EA 100%);
+}
+
+.library_title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #525252;
+}
+
+.library_exercise_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #525252;
+}
+
+.filter_icon {
+    color: #525252;
+    border: none;
+    background-color: none;
+}
+
+.add_button {
+    color: #525252;
+    border: none;
+    background-color: none;
+}
+
+.add_button:focus {
+    color: #6966F6
+}
+
+.muscles_worked {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.muscle_bg1 {
+    background-color: #4C49EA;
+}
+
+.muscle_bg2 {
+    background-color: #706DF9;
+}
+
+.muscle_bg3 {
+    background-color: #9898FF;
+}
+
+.muscle_bg4 {
+    background-color: #2F2BEB;
+}
+
+/* ----------------------- Workout ----------------------- */
+.delete_button {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2F2BEB;
+    border: none;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+.delete_button:active {
+    background-color: #2824C7;
+
+}
+
+.workout_name_label {
+    font-weight: bold;
+    opacity: 0.75;
+    font-size: 18px;
+    color: #fff;
+}
+
+#workout_name {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+  .exercise_box {
+      width: 100%;
+      height: 70vh;
+      overflow-y: scroll !important;
+  }
+
+  .sets_container {
+      background-color: white;
+      border-radius: 20px;
+      width: 80%;
+      display: inline-block;
+  }
+  
+  .exercise_name {
+      color: #525252;
+      font-weight: 500;
+      font-size: 18px;
+  }
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }
+
+  .set_button {
+      background-color: #2F2BEB;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      width: 100%;
+  }
+
+  .set_button:active {
+    background-color: #2824C7;
+  }
+
+  .set_subtitle {
+    font-size: 18px;
+    color: #525252;
+  }
+
+  #weight {
+    color: #525252;
+    font-weight: bold;
+  }
+
+  #reps {
+    color: #525252;
+    font-weight: bold;
+  }
+
+  .set_num {
+    opacity: 0.6;
+    font-weight: 500;
+  }

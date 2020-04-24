@@ -8,9 +8,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
-    <link href="reset.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,7 +65,144 @@
             <div class="col-sm-2 text-right pt-2">
                 <a class = "link" href="workouts.html">Save Workout</a>
             </div>
-        
+        </div>
+
+        <div class="row mx-0 p-4">
+            <div class="col-sm-6">
+                <!-- Library Container -->
+                <div class="library_container">
+                    <!-- Library Title and Filter -->
+                    <div class="row px-4 pt-4 pb-2">
+                        <div class="col-sm-10">
+                            <p class="library_title">Library</p>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <button class="filter_icon"><i class="fa fa-sliders" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <!-- Exercise -->
+                    <div class="row pl-4 exercise">
+                        <div class="col-sm-10">
+                            <!-- Exercise Title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="library_exercise_title">Deadlift</p>
+                                </div>
+                            </div>
+                            <!-- Muscles Worked -->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg1">Quadriceps</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg2">Hamstrings</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg3">Lower Back</p>
+                                </div>
+                            </div>
+                            <!-- Muscles Worked -->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg4">Glutes</p>
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                        </div>
+                        <!-- Add Button -->
+                        <div class="col-sm-2 pt-4 mt-4">
+                            <button class="add_button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                 <!-- Workout Container -->
+                <div class="workout_container">
+                    <!-- Workout Title and Delete Button -->
+                    <div class="row px-4 pt-4">
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="workout_name" class="workout_name_label">Workout Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input id="workout_name" type="text" value="" name="workout_name">
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Delete Button -->
+                        <div class="col-sm-4 text-right">
+                            <button class="delete_button px-2">Delete Exercise</button>
+                        </div>
+                    </div>
+                    <div class="row px-4 pt-4">
+                        <div class="col-sm-12">
+                            <!-- Exercises -->
+                            <div class="exercise_box">
+                                <!-- Exercise Checkbox -->
+                                <input type="checkbox" id="deadlift_checkbox" name="exercise_checkbox" class="align-top mt-1">
+                                <!-- Exercise Sets (Checkbox 'label') -->
+                                <label for="deadlift_checkbox" class="sets_container px-4 pt-2 mx-4 mb-0">
+                                    <div class="row">
+                                    <!-- Exercise Name -->
+                                        <div class="col-sm-12">
+                                            <p class="exercise_name noselect">Deadlift</p>
+                                        </div>
+                                    </div>
+                                    <!-- Exercise Set -->
+                                    <div id =0 class="row set_container">
+                                        <div class="col-sm-3">
+                                            <p class="set_num">SET 1</p>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="text" value="" id="reps" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label for="reps" class="set_subtitle">reps</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <p class="set_subtitle">*</p>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="text" value="" id="weight" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label for="weight" class="set_subtitle">lbs</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add/Delete Set Buttons-->
+                                    <div class="row mb-2">
+                                        <div class="col-sm-6">
+                                            <button id="add_button" class="set_button p-2">ADD SET</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="delete_button" class="set_button p-2">REMOVE SET</button>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
