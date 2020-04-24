@@ -1,0 +1,874 @@
+/* ----------------------- General ----------------------- */
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #FDFDFD !important;
+    font-family: 'Roboto' !important;
+}
+
+.main {
+    margin-left: 115px !important; /* same as width of sidebar */
+    height: 100vh;
+    width: calc(100% - 115px) !important;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #525252;
+    text-align: left;
+}
+
+/* ----------------------- Home Page ----------------------- */
+/* ----------------------- Sidebar ----------------------- */
+.sidenav {
+    height: 100%;
+    width: 115px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    background-image: linear-gradient(#706DF9, #4C27B6);
+    border-radius: 0 40px 40px 0;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.link1, .link2, .link3, .link4 {
+    display: block;
+    text-align: center;
+    padding: 75px 0 75px 0;
+    margin: -1px;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    background-color: #F3F3F3;
+    color: grey;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 25px 10px 25px;
+    position: fixed;
+    z-index: 100;
+    margin-left: 10px;
+    
+    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #F3F3F3 transparent transparent;
+}
+
+.link1:hover .tooltiptext, .link2:hover .tooltiptext, .link3:hover .tooltiptext, .link4:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.sidenav a img {
+    height: 35px;
+    width: 35px;
+}
+
+/* ----------------------- Header ----------------------- */
+
+.header {
+    display: inline-flex;
+    margin-left: 115px;  /* same as width of sidebar */
+    align-content: center;
+    align-items: center;
+}
+
+/* ----------------------- Search bar ----------------------- */
+
+.searchContainer {
+    display: inline-flex;
+    flex: 1 1 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 500px;
+    height: 45px;
+}
+
+.searchIcon {
+    padding: 14px;
+    color: grey;
+    background-color: #F3F3F3;
+    text-align: center;
+}
+
+.searchBox {
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    flex: 1;
+    font-size: 14px;
+    background-color: #F3F3F3;
+}
+
+/* ----------------------- Settings and Profile ----------------------- */
+
+.settings {
+    border: none;
+    margin-right: 10px;
+    background-color: #FDFDFD;
+}
+
+.profile {
+    display: inline-block;
+    align-items: center;
+}
+
+.userIcon {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.name {
+    border: none;
+    background-color: #FDFDFD;
+    font-size: 18px;
+    font-weight: bold;
+    color: #525252;
+    margin-left: 10px;
+}
+
+.dropdownIcon {
+    margin-left: 10px;
+}
+
+.dropdown-content {
+    position: absolute;
+    display: none;
+    background-color: #706DF9;
+    top: 42px;
+    min-width: 160px;
+    border-radius: 20px;
+    z-index: 1;
+    opacity: 0;
+    transition: all .5s ease;
+    height: 0;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #7371FF;
+    text-decoration: none;
+    color: white;
+}
+
+.profile:hover .dropdown-content {
+    height: 145px;
+    opacity: 1;
+    display: block;
+    transform: translateY(0);
+}
+
+/* ----------------------- Welcome Section ----------------------- */
+
+.welcome_container {
+    border-radius: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #706DF9;
+}
+
+.welcome_box {
+    border-radius: 20px;
+    background-color: #706DF9;
+}
+
+.welcome_title {
+    color: white;
+    font-size: 28px;
+}
+
+.subtitle {
+    color: white;
+    margin-top: -15px;
+}
+
+.box {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    background-color: #B7B6FC;
+    opacity: 100%;
+    border-radius: 20px;
+}
+
+.box p {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 0;
+}
+
+.people {
+    margin-top: 40px;
+    height: 160px;
+    width: auto;
+}
+
+/* ----------------------- Previous Workouts Section ----------------------- */
+
+.prev_workout_container {
+    height: 100px;
+    background-color: #4C49EA;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.prev_workout_container:hover {
+    background-color: #fff;
+    box-shadow: 2px 2px 10px rgba(76, 73, 234, 0.5);
+}
+
+.prev_workout_container:hover .subtitle2, .prev_workout_container:hover .desc {
+    color: #4C49EA;
+}
+
+select {
+    width: 180px;
+    padding: 10px;
+    font-family: "Roboto";
+    font-size: 13px;
+    color: #525252;
+    border: 0 !important;
+    background-color: #f3f3f3;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+      background-size: .6em;
+      background-position: calc(100% - 1.3em) center;
+      background-repeat: no-repeat;
+  }
+  select::-ms-expand {
+      display: none;
+  }
+
+  .date {
+    display: block;
+    float: left;
+    background-color: #B7B6FC;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin: 10px;
+    padding: 15px;
+}
+
+.subtitle2 {
+    text-align: top !important;
+    display: block;
+    color: white;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.desc {
+    color: white;
+    margin-top: -10px;
+}
+
+/* ----------------------- My Workouts Section----------------------- */
+
+.workouts_container {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.link {
+    text-decoration: none;
+    color: #4C49EA;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #4C49EA;
+}
+
+.bar1, .bar2, .bar3, .bar4, .bar5{
+    bottom: 0 !important;
+    flex: 1;
+    align-self: flex-end;
+}
+
+.bar1 {
+    background-color: #4C49EA;
+    border-radius: 0 0 0 20px;
+    height: 30%;
+}
+
+.bar2 {
+    background-color: #706DF9;
+    height: 50%;
+
+}
+.bar3 {
+    background-color: #7272FF;
+    height: 70%;
+}
+
+.bar4 {
+    background-color: #2F2BEB;
+    height: 60%;
+}
+
+.bar5 {
+    background-color: #4C49EA;
+    border-radius: 0px 0 20px 0;
+    height: 55%;
+}
+
+.measurements {
+    float: right;
+}
+
+.measurements p {
+    border-style: solid;
+    border-color: transparent;
+    text-align: left;
+    padding-top: 100%;
+    padding-bottom: 100%;
+    color: #4C49EA;
+}
+
+.diagram {
+   padding: 10px;
+}
+
+.graph_container {
+    height: 95%;
+    display: flex;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background-color: #EDEDFF;
+}
+
+.start {
+    display: inline-block;
+    text-decoration: none;
+    background-image: linear-gradient(#4C49EA, #706DF9);
+    color: white;
+    font-weight: 500;
+    padding: 12px 20px 12px 20px;
+    border-radius: 5px;
+    margin: 40px 0 20px 20px;
+}
+
+.start:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.completed {
+    display: inline-block;
+    text-align: center;
+    color: #4C49EA;
+    font-size: 18px;
+    margin: 0 0 0 20px;
+}
+
+.day {
+    color: #4C49EA;
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+/* ----------------------- Muscle Engagement Section ----------------------- */
+
+.margin {
+    margin: 30px !important;
+}
+
+.muscle_engagement_container {
+    vertical-align: bottom;
+    height: 865px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.section {
+    display: block;
+    width: 800px;
+    height: 300px;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    margin: 20px;
+    padding: 20px;
+}
+
+progress {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+     /* Reset the default appearance */
+    -webkit-appearance: none;
+    appearance: none;    
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+
+progress[value]::-webkit-progress-value {
+    background-image: linear-gradient(#6F6CF8, #4C27B6);
+    border-radius: 5px; 
+}
+
+.muscle {
+    color: #525252;
+    font-weight: 500;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.muscle_group {
+    color: #4C49EA;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.week {
+    font-size: 14px;
+    color :#525252;
+    margin-top: -20px;
+    margin-left: 30px;
+    text-align: left;
+}
+
+/* ----------------------- Workouts Page ----------------------- */
+
+.workouts_title {
+    font-size: 24px;
+    color: #525252;
+}
+
+/* ----------------------- Filter Container ----------------------- */
+.filter_container {
+    position: fixed;
+    height: 78%;
+    border-radius: 20px;
+    background-image: linear-gradient(#4C49EA, #706DF9);
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+}
+
+.filter_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.filter_group_text {
+    font-size: 16px;
+    color: white;
+    padding: 0;
+    margin: 0;
+    text-align:left;
+}
+
+.filter_button_container {
+    text-align: center;
+}
+
+.filter_button {
+    display: inline-block;
+    color: white;
+    background-color: #A6A6F5;
+    width: 90px;
+    padding: 12px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.apply_button {
+    display:inline-block;
+    color: #6966F6;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.filter_button.selected {
+    color: #4C49EA;
+    background-color: white;
+}
+
+/* ----------------------- Current Workout Page ----------------------- */
+/* ----------------------- Heading ----------------------- */
+.edit {
+    color: #959595;
+}
+
+.edit:hover {
+    text-decoration: none;
+    color: #959595;
+}
+
+.pencil {
+    vertical-align: baseline;
+}
+
+.clock {
+    height: 18px;
+}
+
+/* ----------------------- Exercise Container ----------------------- */
+.exercise_container {
+    height: 85vh;
+    width: 100%;
+    border-radius: 20px;
+    text-align: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.color1 {
+    background-color: #502EBD;
+}
+
+.color2 {
+    background-color: #5D49D6;
+}
+
+.color3 {
+    background-color: #675BE8;
+}
+
+.color4 {
+    background-color: #6960EC;
+}
+
+.color5 {
+    background-color: #766EF1;
+}
+
+.exercises > .row{
+    overflow-x: scroll !important;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+.exercises > .row > .col-sm-4 {
+    display: inline-block;
+    float: none;
+}
+
+ /* Make scrollbar always visible */
+::-webkit-scrollbar { 
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+/* ----------------------- Exercises ----------------------- */
+.exercise_title {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.exercise_num {
+    color: white;
+    text-align: left;
+}
+
+.set {
+    height: 85px;
+    border-radius: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.set:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.set_title {
+    color: white;
+    opacity: 0.6;
+    text-align: center;
+
+}
+
+.number {
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.small_text {
+    color: white;
+}
+
+.complete {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 10px;
+    color: #6966F6;
+    border: none;
+    text-align: center;
+}
+
+.buttons {
+    position: absolute;
+    width: inherit;
+    bottom: 0;
+}
+
+.check {
+    width: 20px;
+    height: 20px;
+}
+
+/* ----------------------- Create Workout Page ----------------------- */
+/* ----------------------- Library ----------------------- */
+.library_container {
+    width: 100%;
+    height: 85vh;
+    border-radius: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.workout_container {
+    width: 100%;
+    height: 85vh;
+    border-radius: 20px;
+    background-image: linear-gradient(180deg, #706DF9 0%, #4C49EA 100%);
+}
+
+.library_title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #525252;
+}
+
+.library_exercise_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #525252;
+}
+
+.filter_icon {
+    color: #525252;
+    border: none;
+    background-color: none;
+}
+
+.add_button {
+    color: #525252;
+    border: none;
+    background-color: none;
+}
+
+.add_button:focus {
+    color: #6966F6
+}
+
+.muscles_worked {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.muscle_bg1 {
+    background-color: #4C49EA;
+}
+
+.muscle_bg2 {
+    background-color: #706DF9;
+}
+
+.muscle_bg3 {
+    background-color: #9898FF;
+}
+
+.muscle_bg4 {
+    background-color: #2F2BEB;
+}
+
+/* ----------------------- Workout ----------------------- */
+.delete_button {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2F2BEB;
+    border: none;
+    border-radius: 5px;
+    opacity: 0.5;
+}
+
+.delete_button:active {
+    background-color: #2824C7;
+
+}
+
+.workout_name_label {
+    font-weight: bold;
+    opacity: 0.75;
+    font-size: 18px;
+    color: #fff;
+}
+
+#workout_name {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+}
+.exercise {
+    cursor: pointer;
+}
+
+  .exercise_box {
+      width: 100%;
+      height: 70vh;
+      overflow-y: scroll !important;
+  }
+
+  .sets_container {
+      background-color: white;
+      border-radius: 20px;
+      width: 80%;
+      display: inline-block;
+  }
+  
+  .exercise_name {
+      color: #525252;
+      font-weight: 500;
+      font-size: 18px;
+  }
+
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }
+
+  .set_button {
+      background-color: #2F2BEB;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      width: 100%;
+  }
+
+  .set_button:active {
+    background-color: #2824C7;
+  }
+
+  .set_subtitle {
+    font-size: 18px;
+    color: #525252;
+  }
+
+  #weight {
+    color: #525252;
+    font-weight: bold;
+  }
+
+  #reps {
+    color: #525252;
+    font-weight: bold;
+  }
+
+  .set_num {
+    opacity: 0.6;
+    font-weight: 500;
+  }
+
+  /* ----------------------- Exercise Details ----------------------- */
+.exercise_details {
+    width: 90% !important;
+}
+
+.video {
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    display:inline-block;
+    background-color: lightgrey;
+}
+
+.modal_background {
+    background-image: linear-gradient(#4C49EA, #706DF9);;
+}
+
+.modal-title {
+    color: white !important;
+}
+
+.modal_subtitle{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal_body {
+    color: white;
+}
