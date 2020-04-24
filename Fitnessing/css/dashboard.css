@@ -854,3 +854,21 @@ progress[value]::-webkit-progress-value {
     display:inline-block;
     background-color: lightgrey;
 }
+
+.modal_background {
+    background-image: linear-gradient(#4C49EA, #706DF9);;
+}
+
+.modal-title {
+    color: white !important;
+}
+
+.modal_subtitle{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal_body {
+    color: white;
+}

@@ -34,11 +34,11 @@
     </div>
     
     <!-- Exercise Detail Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
+          <div class="modal-content modal_background">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Deadlift How-To</h5>
+              <h5 class="modal-title" id="detailsModalLabel">Deadlift How-To</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -48,7 +48,7 @@
                     <div class="row mt-4">
                         <div class="col-sm-12 text-center">
                             <!-- Exercise Video -->
-                            <iframe class="video" src="https://www.youtube.com/embed/r4MzxtBKyNE">
+                            <iframe class="video" id="video" src="https://www.youtube.com/embed/r4MzxtBKyNE">
                             </iframe>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p class="library_title">Muscles Involved</p>
+                                    <p class="modal_subtitle">Muscles Involved</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -81,12 +81,99 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p class="library_title mb-0">About</p>
+                                    <p class="modal_subtitle mb-0">About</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class = "col-sm-12">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                    <p class="modal_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Modal -->
+      <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content modal_background">
+            <div class="modal-header">
+              <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 pb-4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="filter_group_text">Muscle Group</p>        
+                                </div>
+                            </div>
+                                
+                            <div class="filter_button_container">
+                                <div class="row p-2 mt-4">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Abs</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button ">Back</button>                
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Biceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Calves</button>                
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Chest</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Forearms</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Glutes</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Hamstrings</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Quadriceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Shoulders</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Traps</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Triceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Upper Back</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Lower Back</button>
+                                    </div>
+                                </div>
+                                <div class="row pt-5 mt-4">
+                                    <div class="col-sm-12">
+                                        <button class="apply_button">APPLY</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -141,12 +228,12 @@
                             <p class="library_title">Library</p>
                         </div>
                         <div class="col-sm-2 text-right">
-                            <button class="filter_icon"><i class="fa fa-sliders" aria-hidden="true"></i></button>
+                            <button class="filter_icon" data-toggle="modal" data-target="#filterModal"><i class="fa fa-sliders" aria-hidden="true"></i></button>
                         </div>
                     </div>
                     <!-- Exercise -->
                     <div class="row pl-4 exercise">
-                        <div class="col-sm-10" data-toggle="modal" data-target="#exampleModal">
+                        <div class="col-sm-10" data-toggle="modal" data-target="#detailsModal">
                             <!-- Exercise Title -->
                             <div class="row">
                                 <div class="col-sm-12">
