@@ -4,7 +4,8 @@ from .models import *
 
 @login_required
 def dashboard_view(request):
-	return render(request, 'home.html', {})
+	workouts = Workout.objects.filter(user=request.user)
+	return render(request, 'home.html', {'workouts':workouts})
 
 @login_required
 def workouts_view(request):
