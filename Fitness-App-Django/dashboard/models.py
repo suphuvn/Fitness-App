@@ -2,27 +2,27 @@ from django.db import models
 from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
-class Exercise(models.Model):
+class ExerciseType(models.Model):
 	TYPES = (
-		('bicep-curls', 'Bicep Curls'),
-		('squats', 'Squats'),
-		('jumping-jacks', 'Jumping Jacks'),
-		('bench-press', 'Bench Press'),
-		('bulgarian-split-squat', 'Bulgarian Split Squat'),
-		('chest-fly', 'Chest Fly'),
-		('crunches', 'Crunches'),
-		('curtsy-lunge', 'Curtsy Lunge'),
-		('good-morning', 'Good Morning'),
-		('hip-abduction', 'Hip Abduction'),
-		('hip-thrusts', 'Hip Thrusts'),
-		('leg-extension', 'Leg Extension'),
-		('leg-press', 'Leg Press'),
-		('lying-leg-curl', 'Lying Leg Curl'),
-		('rdl', 'RDL'),
-		('russian-twists', 'Russian Twists'),
-		('sumo-deadlift', 'Sumo Deadlift'),
-		('tricep-extension', 'Tricep Extension'),
-	)
+			('bicep-curls', 'Bicep Curls'),
+			('squats', 'Squats'),
+			('jumping-jacks', 'Jumping Jacks'),
+			('bench-press', 'Bench Press'),
+			('bulgarian-split-squat', 'Bulgarian Split Squat'),
+			('chest-fly', 'Chest Fly'),
+			('crunches', 'Crunches'),
+			('curtsy-lunge', 'Curtsy Lunge'),
+			('good-morning', 'Good Morning'),
+			('hip-abduction', 'Hip Abduction'),
+			('hip-thrusts', 'Hip Thrusts'),
+			('leg-extension', 'Leg Extension'),
+			('leg-press', 'Leg Press'),
+			('lying-leg-curl', 'Lying Leg Curl'),
+			('rdl', 'RDL'),
+			('russian-twists', 'Russian Twists'),
+			('sumo-deadlift', 'Sumo Deadlift'),
+			('tricep-extension', 'Tricep Extension'),
+		)
 	MUSCLES = (
 		('abs', 'Abs'),
 		('back', 'Back'),
@@ -40,11 +40,16 @@ class Exercise(models.Model):
 		('lower-back', 'Lower Back'),
 		
 	)
+
 	name = models.CharField(max_length=120, choices = TYPES, default = 'bicep-curls')
 	muscles_worked = MultiSelectField(max_length=120, choices = MUSCLES, default = 'biceps')
+	video_link = models.URLField(max_length=500)
+
+class Exercise(models.Model):
+	exercise_type = models.ForeignKey(ExerciseType, on_delete=models.CASCADE)
+	
 	num_reps = models.IntegerField()
 	num_sets = models.IntegerField()
-	video_link = models.URLField(max_length=500)
 	weight_lifted = models.DecimalField(max_digits=5, decimal_places=1)
 	weight = models.DecimalField(max_digits=5, decimal_places=1)
 
