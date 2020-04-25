@@ -34,14 +34,6 @@
                     <p class="desc">This is a placeholder for some text. I don’t know what text will go here</p>
                     <form method="post">
                         <div class="contain">
-                            <!-- <div class="container_email">
-                                <label for="email">Email Address</label><br>
-                                <input type="text" id="email" name="email">
-                            </div>
-                            <div class="container_pass">
-                                <label for="pass">Password</label><br>
-                                <input type="password" id="pass" name="pass">
-                            </div> -->
                             {% csrf_token %}
                             {{ form.as_p }}
                         </div>

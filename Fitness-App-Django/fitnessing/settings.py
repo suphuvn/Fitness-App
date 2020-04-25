@@ -74,7 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fitnessing.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
