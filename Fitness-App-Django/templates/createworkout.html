@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitnessing - Current Workout</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link href="{% static 'fitnessing/css/dashboard.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="sidenav">
+        <div class=link1>
+            <a href="/"><img class="home" src="{% static 'fitnessing/images/Home_Icon_White.svg' %}"></a>
+            <span class="tooltiptext">Home</span>
+        </div>
+        <div class=link2>
+            <a href="/workouts"><img class="workouts" src="{% static 'fitnessing/images/Weight_Icon.svg' %}"></a>
+            <span class="tooltiptext">Workouts</span>
+        </div>
+        <div class=link3>
+            <a href="/stats"><img class="stats" src="{% static 'fitnessing/images/Bar_Chart_Icon.svg' %}"></a>
+            <span class="tooltiptext">Statistics</span>
+        </div>
+        <div class=link4>
+            <a href="/accounts/logout"><img class="login" src="{% static 'fitnessing/images/Logout_Icon.svg' %}"></a>
+            <span class="tooltiptext">Log out</span>
+        </div>
+    </div>
+    
+    <!-- Exercise Detail Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content modal_background">
+            <div class="modal-header">
+              <h5 class="modal-title" id="detailsModalLabel">Deadlift How-To</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid exercise_details">
+                    <div class="row mt-4">
+                        <div class="col-sm-12 text-center">
+                            <!-- Exercise Video -->
+                            <iframe class="video" id="video" src="https://www.youtube.com/embed/r4MzxtBKyNE">
+                            </iframe>
+                        </div>
+                    </div>
+                    <!-- Muscles Involved -->
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="modal_subtitle">Muscles Involved</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="muscles_worked muscle_bg1">Quadriceps</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="muscles_worked muscle_bg2">Hamstrings</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="muscles_worked muscle_bg3">Lower Back</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p class="muscles_worked muscle_bg4">Glutes</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- About -->
+                        <div class="col-sm-6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="modal_subtitle mb-0">About</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class = "col-sm-12">
+                                    <p class="modal_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Modal -->
+      <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content modal_background">
+            <div class="modal-header">
+              <h5 class="modal-title" id="filterModalLabel">Filter</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 pb-4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="filter_group_text">Muscle Group</p>        
+                                </div>
+                            </div>
+                                
+                            <div class="filter_button_container">
+                                <div class="row p-2 mt-4">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Abs</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button ">Back</button>                
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Biceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Calves</button>                
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Chest</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Forearms</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Glutes</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Hamstrings</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Quadriceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Shoulders</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Traps</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Triceps</button>
+                                    </div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Upper Back</button>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button class="filter_button">Lower Back</button>
+                                    </div>
+                                </div>
+                                <div class="row pt-5 mt-4">
+                                    <div class="col-sm-12">
+                                        <button class="apply_button">APPLY</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container-fluid main">
+        <div class="row mx-4 mt-4">
+            <div class="col-sm-8">
+                <div class="searchContainer">
+                    <i class="fa fa-search searchIcon"></i>
+                    <input class="searchBox" type="text" placeholder="Search">
+                </div>
+            </div>
+            
+            <div class="col-sm-4 text-right pt-2">
+                <a href="settings.html"><img class="settings" src="{% static 'fitnessing/images/Settings_Icon.svg' %}"></a>
+            
+                <div class="profile align-middle">
+                    <img class="userIcon" src="{% static 'fitnessing/images/Placeholder_User_Icon.png' %}">
+                    <button class="name">Kumiko</button>
+                    <img class="dropdownIcon" src="{% static 'fitnessing/images/Dropdown_Icon.svg' %}">
+                    <div class="dropdown-content">
+                      <a href="#">Link 1</a>
+                      <a href="#">Link 2</a>
+                      <a href="#">Link 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Heading -->
+        <div class="row mx-0 pt-4 pl-4 mr-4">
+            <div class="col-sm-10">
+                <p class="workouts_title m-0"><b>Create a Workout</b></p>
+            </div>
+            <div class="col-sm-2 text-right pt-2">
+                <a class = "link" href="workouts.html">Save Workout</a>
+            </div>
+        </div>
+
+        <div class="row mx-0 p-4">
+            <div class="col-sm-6">
+                <!-- Library Container -->
+                <div class="library_container">
+                    <!-- Library Title and Filter -->
+                    <div class="row px-4 pt-4 pb-2">
+                        <div class="col-sm-10">
+                            <p class="library_title">Library</p>
+                        </div>
+                        <div class="col-sm-2 text-right">
+                            <button class="filter_icon" data-toggle="modal" data-target="#filterModal"><i class="fa fa-sliders" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <!-- Exercise -->
+                    <div class="row pl-4 exercise">
+                        <div class="col-sm-10" data-toggle="modal" data-target="#detailsModal">
+                            <!-- Exercise Title -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p class="library_exercise_title">Deadlift</p>
+                                </div>
+                            </div>
+                            <!-- Muscles Worked -->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg1">Quadriceps</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg2">Hamstrings</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg3">Lower Back</p>
+                                </div>
+                            </div>
+                            <!-- Muscles Worked -->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <p class="muscles_worked muscle_bg4">Glutes</p>
+                                </div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                            </div>
+                        </div>
+                        <!-- Add Button -->
+                        <div class="col-sm-2 pt-4 mt-4">
+                            <button class="add_button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                 <!-- Workout Container -->
+                <div class="workout_container">
+                    <!-- Workout Title and Delete Button -->
+                    <div class="row px-4 pt-4">
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <label for="workout_name" class="workout_name_label">Workout Name</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <input id="workout_name" type="text" value="" name="workout_name">
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Delete Button -->
+                        <div class="col-sm-4 text-right">
+                            <button class="delete_button px-2">Delete Exercise</button>
+                        </div>
+                    </div>
+                    <div class="row px-4 pt-4">
+                        <div class="col-sm-12">
+                            <!-- Exercises -->
+                            <div class="exercise_box">
+                                <!-- Exercise Checkbox -->
+                                <input type="checkbox" id="deadlift_checkbox" name="exercise_checkbox" class="align-top mt-1">
+                                <!-- Exercise Sets (Checkbox 'label') -->
+                                <label for="deadlift_checkbox" class="sets_container px-4 pt-2 mx-4 mb-0">
+                                    <div class="row">
+                                    <!-- Exercise Name -->
+                                        <div class="col-sm-12">
+                                            <p class="exercise_name noselect">Deadlift</p>
+                                        </div>
+                                    </div>
+                                    <!-- Exercise Set -->
+                                    <div id =0 class="row set_container">
+                                        <div class="col-sm-3">
+                                            <p class="set_num">SET 1</p>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="text" value="" id="reps" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label for="reps" class="set_subtitle">reps</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <p class="set_subtitle">*</p>
+                                        </div>
+                                        <div class="col-sm-3 text-center">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="text" value="" id="weight" class="form-control"/>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label for="weight" class="set_subtitle">lbs</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add/Delete Set Buttons-->
+                                    <div class="row mb-2">
+                                        <div class="col-sm-6">
+                                            <button id="add_button" class="set_button p-2">ADD SET</button>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <button id="delete_button" class="set_button p-2">REMOVE SET</button>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'fitnessing/javascript/dashboard.js' %}"></script>
+    <script type="text/javascript" src="{% static 'fitnessing/javascript/createworkout.js' %}"></script>
+</body>
+   
+</html>

@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATE_DIR],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -75,6 +75,7 @@ WSGI_APPLICATION = 'fitnessing.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_URL = '/accounts/login'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

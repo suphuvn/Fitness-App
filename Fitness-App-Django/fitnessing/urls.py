@@ -19,7 +19,7 @@ from dashboard.views import dashboard_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', dashboard_view, name='dashboard'),
+    path('', include('dashboard.urls'), name='dashboard'),
+    path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('accounts.urls'))
 ]

@@ -35,9 +35,26 @@
                     <form method="post">
                         <div class="contain">
                             {% csrf_token %}
-                            {{ form.as_p }}
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong>{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                            <div class="container_email">
+                                {% for error in field.errors %}
+                                  <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                <label for="id_username">Username</label><br>
+                                <input type="text" id="id_username" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required>
+                            </div>
+                            <div class="container_pass">
+                                {% for error in field.errors %}
+                                  <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                <label for="id_password">Password</label><br>
+                                <input type="password" id="id_password" name="password" autocomplete="current-password" required>
+                            </div>
                         </div>
-
                         <div class="form_flexbox">
                             <label class="checkbox_container">Remember me
                                 <input type="checkbox" checked="checked">
@@ -49,7 +66,7 @@
 
                         <input type="submit" value="Login">
 
-                        <a href="register.html" class="register">Don't have an account? <b>Click here</b></a>
+                        <a href="/accounts/signup" class="register">Don't have an account? <b>Click here</b></a>
                     </form>
                 </div>
             </div>
