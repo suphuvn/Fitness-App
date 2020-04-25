@@ -1,12 +1,12 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import Account
+from django.contrib.auth.models import User
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(max_length=60, help_text='Required. Add a valid email address')
-    first_name = forms.CharField(max_length=60, help_text='Required. Add a first name')
-    last_name = forms.CharField(max_length=60, help_text='Required. Add a last name')
+    email = forms.EmailField(max_length=60)
+    first_name = forms.CharField(max_length=60)
+    last_name = forms.CharField(max_length=60)
 
     class Meta:
-        model = Account
-        fields = ('email', 'first_name', 'last_name', 'password')
+        model = User
+        fields = ('email', 'first_name', 'last_name', 'username', 'password1', 'password2')

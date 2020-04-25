@@ -2,28 +2,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from accounts.forms import RegistrationForm
 
-# Create your views here.
 def signup_view(request):
-    context = {}
-    if request.POST:
+    if request.method == 'POST':
         form = RegistrationForm(request.POST)
+
         if form.is_valid():
             form.save()
-            email = request.POST.get('email')
-            password = request.POST.get('pass')
-            account = authenticate(email=email, password=password)
-            login(request, account)
-            return redirect('dashboard')
-        else:
-            context['registration_form'] = form
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+
+            if user:
+                login(request, user)
+                return redirect('/')
+            else:
+                return redirect('/accounts/login')
     else:
         form = RegistrationForm()
-        context['registration_form'] = form
-    return render(request, 'accounts/signup.html', context)
 
-def login_view(request):
-    return render(request, 'accounts/login.html', {})
-
-def logout_view(request):
-    logout(request)
-    return redirect('dashboard')
+    return render(request, 'registration/signup.html', {'form': form})
