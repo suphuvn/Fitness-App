@@ -41,7 +41,12 @@ def dashboard_view(request):
 @login_required
 def workouts_view(request):
 	workouts = Workout.objects.filter(user=request.user)
-	return render(request, 'workouts.html', {'workouts':workouts})
+	exercises = []
+	for workout in workouts:
+		for exercise in Exercise.objects.filter(workout=workout):
+			exercises.append(exercise)
+
+	return render(request, 'workouts.html', {'workouts':workouts, 'exercises':exercises})
 
 @login_required
 def stats_view(request):
@@ -54,4 +59,5 @@ def settings_view(request):
 @login_required
 def create_workout_view(request):
 	exercises = ExerciseType.objects.all()
+
 	return render(request, 'createworkout.html', {'exercises':exercises})

@@ -95,7 +95,7 @@ function addSet(event, button) {
     <div class="col-sm-3 text-center">
         <div class="row">
             <div class="col-sm-12">
-                <input type="text" value="" id="reps" class="form-control"/>
+                <input type="number" min="0" value="" id="reps" class="form-control reps"/>
             </div>
         </div>
         <div class="row">
@@ -110,7 +110,7 @@ function addSet(event, button) {
     <div class="col-sm-3 text-center">
         <div class="row">
             <div class="col-sm-12">
-                <input type="text" value="" id="weight" class="form-control"/>
+                <input type="number" min="0" value="" id="weight" class="form-control weight"/>
             </div>
         </div>
         <div class="row">

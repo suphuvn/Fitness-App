@@ -73,11 +73,13 @@
             <div class="col-sm-8">
                 <!-- Workout Container -->
                 <div class="row workouts_container mx-0 mb-4">
+                    {% if workouts.count > 0 %}
+                    {% for workout in workouts %}
                     <div class="col-sm-5">
                         <div class="row p-3">
                             <div class="col-sm-12">
-                                <p class="muscle_group mb-2">Chest & Biceps</p>
-                                <p class="day mb-0">Tues, Feb 25</p>
+                                <p class="muscle_group mb-2">{{workout.name}}</p>
+                                <p class="day mb-0">{{workout.last_date_completed}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -86,16 +88,36 @@
                             </div>
                             <div class="col-sm-6">
                                 <a class="start" href="currentworkout.html">START</a>
-                                <p class="completed"><b>3</b><br>times<br>completed</p>
+                                <p class="completed"><b>{{workout.times_completed}}</b><br>times<br>completed</p>
                             </div>
                         </div>
                     </div>
                     <!-- Graph -->
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
-                            <div class="col-sm-4 bar1"></div>
-                            <div class="col-sm-4 bar2"></div>
-                            <div class="col-sm-4 bar5"></div>
+                            {% for exercise in exercises %}
+                            {% if exercise.workout == workout %}
+                            {% widthratio exercise.weight_lifted 5000 100 as percent %}
+                            {% if forloop.counter0 == 0 %}
+                            <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 1 %}
+                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 2 %}
+                            <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 3 %}
+                            <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 4 %}
+                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 5 %}
+                            <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-sm-1">
@@ -106,81 +128,12 @@
                             <p>0</p>
                         </div>
                     </div>
-                </div>
-
-                <!-- Workout Container -->
-                <div class="row workouts_container mx-0 mb-4">
-                    <div class="col-sm-5">
-                        <div class="row p-3">
-                            <div class="col-sm-12">
-                                <p class="muscle_group mb-2">Back & Biceps</p>
-                                <p class="day mb-0">Tues, Feb 25</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img class="diagram" src="{% static 'fitnessing/images/Muscles.svg' %}">
-                            </div>
-                            <div class="col-sm-6">
-                                <a class="start" href="currentworkout.html">START</a>
-                                <p class="completed"><b>0</b><br>times<br>completed</p>
-                            </div>
-                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="col-sm-12 text-center mt-4 pt-4">
+                        <p class="empty_workouts">You have no workouts added yet. Go on and add your first one!</p>
                     </div>
-                    <!-- Graph -->
-                    <div class="col-sm-6 p-4">
-                        <div class="row graph_container">
-
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <div class="measurements">
-                            <p>5k</p>
-                            <p>3k</p>
-                            <p>1k</p>
-                            <p>0</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Workout Container -->
-                <div class="row workouts_container mx-0 mb-4">
-                    <div class="col-sm-5">
-                        <div class="row p-3">
-                            <div class="col-sm-12">
-                                <p class="muscle_group mb-2">Legs & Abs</p>
-                                <p class="day mb-0">Tues, Feb 25</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <img class="diagram" src="{% static 'fitnessing/images/Muscles.svg' %}">
-                            </div>
-                            <div class="col-sm-6">
-                                <a class="start" href="currentworkout.html">START</a>
-                                <p class="completed"><b>6</b><br>times<br>completed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Graph -->
-                    <div class="col-sm-6 p-4">
-                        <div class="row graph_container">
-                            <div class="col-sm-2 bar1"></div>
-                            <div class="col-sm-2 bar2"></div>
-                            <div class="col-sm-2 bar3"></div>
-                            <div class="col-sm-2 bar4"></div>
-                            <div class="col-sm-2 bar2"></div>
-                            <div class="col-sm-2 bar5"></div>
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <div class="measurements">
-                            <p>5k</p>
-                            <p>3k</p>
-                            <p>1k</p>
-                            <p>0</p>
-                        </div>
-                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-sm-4 pb-4">

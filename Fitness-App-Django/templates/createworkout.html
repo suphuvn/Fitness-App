@@ -34,70 +34,6 @@
             <span class="tooltiptext">Log out</span>
         </div>
     </div>
-    
-    <!-- Exercise Detail Modal -->
-    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content modal_background">
-            <div class="modal-header">
-              <h5 class="modal-title" id="detailsModalLabel">Deadlift How-To</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid exercise_details">
-                    <div class="row mt-4">
-                        <div class="col-sm-12 text-center">
-                            <!-- Exercise Video -->
-                            <iframe class="video" id="video" src="https://www.youtube.com/embed/r4MzxtBKyNE">
-                            </iframe>
-                        </div>
-                    </div>
-                    <!-- Muscles Involved -->
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="modal_subtitle">Muscles Involved</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="muscles_worked muscle_bg1">Quadriceps</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="muscles_worked muscle_bg2">Hamstrings</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="muscles_worked muscle_bg3">Lower Back</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="muscles_worked muscle_bg4">Glutes</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- About -->
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="modal_subtitle mb-0">About</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class = "col-sm-12">
-                                    <p class="modal_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!-- Filter Modal -->
       <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
@@ -235,12 +171,89 @@
                     </div>
                     <!-- Exercise -->
                     {% for exercise in exercises %}
+                    <!-- Exercise Detail Modal -->
+                    <div class="modal fade" id="{{exercise.name}}Modal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content modal_background">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="detailsModalLabel">{{exercise.get_exercise_name}} How-To</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container-fluid exercise_details">
+                                    <div class="row mt-4">
+                                        <div class="col-sm-12 text-center">
+                                            <!-- Exercise Video -->
+                                            <iframe class="video" id="video" src={{exercise.video_link}}>
+                                            </iframe>
+                                        </div>
+                                    </div>
+                                    <!-- Muscles Involved -->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <p class="modal_subtitle">Muscles Involved</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                {% for muscle in exercise.muscles_worked %}
+                                                {% if forloop.counter0 == 0 %}
+                                                <div class="col-sm-6">
+                                                    <p class="muscles_worked muscle_bg1">{{muscle}}</p>
+                                                </div>
+                                                {% endif %}
+                                                {% if forloop.counter0 == 1 %}
+                                                <div class="col-sm-6">
+                                                    <p class="muscles_worked muscle_bg2">{{muscle}}</p>
+                                                </div>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                            <div class="row">
+                                                {% for muscle in exercise.muscles_worked %}
+                                                {% if forloop.counter0 == 2 %}
+                                                <div class="col-sm-6">
+                                                    <p class="muscles_worked muscle_bg3">{{muscle}}</p>
+                                                </div>
+                                                {% endif %}
+                                                {% if forloop.counter0 == 2 %}
+                                                <div class="col-sm-6">
+                                                    <p class="muscles_worked muscle_bg4">{{muscle}}</p>
+                                                </div>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                        <!-- About -->
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <p class="modal_subtitle mb-0">About</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class = "col-sm-12">
+                                                    <p class="modal_body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <!-- End Exercise Detail Modal -->
+
                     <div class="row pl-4 exercise">
-                        <div class="col-sm-10" data-toggle="modal" data-target="#detailsModal">
+                        <div class="col-sm-10" data-toggle="modal" data-target="#{{exercise.name}}Modal">
                             <!-- Exercise Title -->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p class="library_exercise_title">{{exercise.name}}</p>
+                                    <p class="library_exercise_title">{{exercise.get_exercise_name}}</p>
                                 </div>
                             </div>
                             <!-- Muscles Worked -->
@@ -336,7 +349,7 @@
                                         <div class="col-sm-3 text-center">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <input type="text" value="" id="reps" class="form-control"/>
+                                                    <input type="number" min="0" value="" id="reps" class="form-control reps"/>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -351,7 +364,7 @@
                                         <div class="col-sm-3 text-center">
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <input type="text" value="" id="weight" class="form-control"/>
+                                                    <input type="number" min="0" value="" id="weight" class="form-control weight"/>
                                                 </div>
                                             </div>
                                             <div class="row">

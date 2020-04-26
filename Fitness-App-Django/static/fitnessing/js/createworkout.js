@@ -15,3 +15,11 @@ $(document).ready(function(){
         $("#video").attr('src', url);
     });
 });
+
+$(document).on('change','.reps', function(){
+    $('.reps').val($(this).val());
+ });
+
+ $(document).on('change','.weight', function(){
+    $('.weight').val($(this).val());
+ });
