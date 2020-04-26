@@ -36,7 +36,7 @@ def dashboard_view(request):
 		for muscle in muscle_groups:
 			occurences[muscle] = int(occurences[muscle]/len(muscles) * 100)
 
-	return render(request, 'home.html', {'workouts':workouts, 'weight_lifted':weightLifted, 'total_time':hoursWorked, 'exercises':exercises, 'date_range':date_range, 'engagement':occurences})
+	return render(request, 'home.html', {'workouts':workouts, 'weight_lifted':weightLifted, 'total_time':hoursWorked, 'date_range':date_range, 'engagement':occurences})
 
 @login_required
 def workouts_view(request):

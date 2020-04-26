@@ -122,7 +122,7 @@
                                 <p class="m-0"><b>{{workout.last_date_completed|date:'d'}}</b><br>{{workout.last_date_completed|date:'M'}}</p>
                             </div>
                             <p class = "subtitle2">{{ workout.name|title }}</p>
-                            <p class = "desc">FIX exercises completed</p>
+                            <p class = "desc">{{ workout.exercise_set.count }} exercises completed</p>
                         </div>
                     </div>
                     {% endif %}
@@ -162,7 +162,7 @@
                     <!-- Graph -->
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
-                            {% for exercise in exercises %}
+                            {% for exercise in workouts.exercise_set %}
                             {% if exercise.workout == first_workout %}
                             {% widthratio exercise.weight_lifted 5000 100 as percent %}
                             {% if forloop.counter0 == 0 %}

@@ -692,6 +692,7 @@ progress[value]::-webkit-progress-value {
     border-radius: 20px;
     background-color: white;
     border: 1px solid #ccc;
+    overflow: scroll;
 }
 
 .workout_container {
