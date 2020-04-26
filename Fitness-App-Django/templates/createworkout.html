@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitnessing - Current Workout</title>
+    <title>Fitnessing - Create Workout</title>
 
     {% load static %}
 
@@ -234,34 +234,54 @@
                         </div>
                     </div>
                     <!-- Exercise -->
+                    {% for exercise in exercises %}
                     <div class="row pl-4 exercise">
                         <div class="col-sm-10" data-toggle="modal" data-target="#detailsModal">
                             <!-- Exercise Title -->
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p class="library_exercise_title">Deadlift</p>
+                                    <p class="library_exercise_title">{{exercise.name}}</p>
                                 </div>
                             </div>
                             <!-- Muscles Worked -->
                             <div class="row">
+                                {% for muscle in exercise.muscles_worked %}
+                                {% if forloop.counter0 == 0 %}
                                 <div class="col-sm-4">
-                                    <p class="muscles_worked muscle_bg1">Quadriceps</p>
+                                    <p class="muscles_worked muscle_bg1">{{muscle}}</p>
                                 </div>
+                                {% endif %}
+                                {% if forloop.counter0 == 1 %}
                                 <div class="col-sm-4">
-                                    <p class="muscles_worked muscle_bg2">Hamstrings</p>
+                                    <p class="muscles_worked muscle_bg2">{{muscle}}</p>
                                 </div>
+                                {% endif %}
+                                {% if forloop.counter0 == 2 %}
                                 <div class="col-sm-4">
-                                    <p class="muscles_worked muscle_bg3">Lower Back</p>
+                                    <p class="muscles_worked muscle_bg3">{{muscle}}</p>
                                 </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                             <!-- Muscles Worked -->
                             <div class="row">
+                                {% for muscle in exercise.muscles_worked %}
                                 <div class="col-sm-4">
-                                    <p class="muscles_worked muscle_bg4">Glutes</p>
+                                    {% if forloop.counter0 == 3 %}
+                                    <p class="muscles_worked muscle_bg4">{{muscle}}</p>
+                                    {% endif %}
                                 </div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4">
+                                    {% if forloop.counter0 == 4 %}
+                                    <p class="muscles_worked muscle_bg1">{{muscle}}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-4">
+                                    {% if forloop.counter0 == 5 %}
+                                    <p class="muscles_worked muscle_bg2">{{muscle}}</p>
+                                    {% endif %}
+                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <!-- Add Button -->
@@ -269,6 +289,7 @@
                             <button class="add_button"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="col-sm-6">

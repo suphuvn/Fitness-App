@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
     <link href="{% static 'fitnessing/css/dashboard.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -67,7 +68,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <p class="welcome_title">Welcome back, <b>{{ user.get_short_name }}</b></p>
-                                <p class="subtitle">This is your progress since {{ user.date_joined }}:</p>
+                                <p class="subtitle">This is your progress since {{ user.date_joined|date:'M d Y' }}:</p>
                             </div>
                         </div>
                         <div class="row">
@@ -78,12 +79,12 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class = "box">
-                                    <p><b>1000 kg</b><br>weight<br>lifted</p>
+                                    <p><b>{{ weight_lifted }} kg</b><br>weight<br>lifted</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class = "box">
-                                    <p><b>300 h</b><br>worked<br>out</p>
+                                    <p><b>{{ total_time }} h</b><br>worked<br>out</p>
                                 </div>
                             </div>
                         </div>
@@ -108,33 +109,24 @@
                 </div>
                 <!-- Previous Workout Container -->
                 <div class="row">
+                    {% if workouts.count == 0 %}
+                    <div class="col-sm-12 px-0 ml-3">
+                        <p class="empty_workouts">You have no workouts added yet. Go on and add your first one!</p>
+                    </div>
+                    {% endif %}
+                    {% for workout in workouts %}
+                    {% if forloop.counter0 < 3 %}
                     <div class="col-sm-4 px-0">
                         <div class = "prev_workout_container" onclick="location.href='currentworkout.html';">
                             <div class="date">
-                                <p class="m-0"><b>20</b><br>Feb</p>
+                                <p class="m-0"><b>{{workout.last_date_completed|date:'d'}}</b><br>{{workout.last_date_completed|date:'M'}}</p>
                             </div>
-                            <p class = "subtitle2">LOWER BODY & ABS</p>
-                            <p class = "desc">6 exercises completed</p>
+                            <p class = "subtitle2">{{ workout.name|title }}</p>
+                            <p class = "desc">FIX exercises completed</p>
                         </div>
                     </div>
-                    <div class="col-sm-4 px-0">
-                        <div class = "prev_workout_container pad" onclick="location.href='currentworkout.html';">
-                            <div class="date">
-                                <p class="m-0"><b>17</b><br>Feb</p>
-                            </div>
-                            <p class = "subtitle2">LOWER BODY</p>
-                            <p class = "desc">5 exercises completed</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 px-0">
-                        <div class = "prev_workout_container" onclick="location.href='currentworkout.html';">
-                            <div class="date">
-                                <p class="m-0"><b>14</b><br>Feb</p>
-                            </div>
-                            <p class = "subtitle2">LOWER BODY & ABS</p>
-                            <p class = "desc">6 exercises completed</p>
-                        </div>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 <!-- My Workouts Title -->
                 <div class="row mt-4">
@@ -148,11 +140,13 @@
 
                 <!-- My Workouts Container -->
                 <div class="row workouts_container mx-0">
+                    {% if workouts.count > 0 %}
+                    {% with workouts|first as first_workout %}
                     <div class="col-sm-5">
                         <div class="row p-3">
                             <div class="col-sm-12">
-                                <p class="muscle_group mb-2">Chest & Biceps</p>
-                                <p class="day mb-0">Tues, Feb 25</p>
+                                <p class="muscle_group mb-2">{{first_workout.name}}</p>
+                                <p class="day mb-0">{{first_workout.last_date_completed}}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -161,19 +155,36 @@
                             </div>
                             <div class="col-sm-6">
                                 <a class="start" href="currentworkout.html">START</a>
-                                <p class="completed"><b>6</b><br>times<br>completed</p>
+                                <p class="completed"><b>{{first_workout.times_completed}}</b><br>times<br>completed</p>
                             </div>
                         </div>
                     </div>
                     <!-- Graph -->
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
-                            <div class="col-sm-2 bar1"></div>
-                            <div class="col-sm-2 bar2"></div>
-                            <div class="col-sm-2 bar3"></div>
-                            <div class="col-sm-2 bar4"></div>
-                            <div class="col-sm-2 bar2"></div>
-                            <div class="col-sm-2 bar5"></div>
+                            {% for exercise in exercises %}
+                            {% if exercise.workout == first_workout %}
+                            {% widthratio exercise.weight_lifted 5000 100 as percent %}
+                            {% if forloop.counter0 == 0 %}
+                            <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 1 %}
+                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 2 %}
+                            <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 3 %}
+                            <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 4 %}
+                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% if forloop.counter0 == 5 %}
+                            <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
+                            {% endif %}
+                            {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-sm-1">
@@ -184,149 +195,47 @@
                             <p>0</p>
                         </div>
                     </div>
+                    {% endwith %}
+                    {% else %}
+                    <div class="col-sm-12 text-center mt-4 pt-4">
+                        <p class="empty_workouts">You have no workouts added yet. Go on and add your first one!</p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <!-- Right column -->
             <div class="col-sm-4">
                 <div class = "muscle_engagement_container">
                     <p class="title margin">Muscle Engagement</p>
-                    <p class="week">Week of Feb 20 - 27</p>
+                    <p class="week">Week of {{ date_range.0|date:'M d Y' }} - {{ date_range.1|date:'M d Y' }}</p>
                     <p class="muscle">Quads</p>
-                    <progress id="Quads" value="5" max="7"> 32% </progress>
+                    <progress id="Quads" value={{engagement.Quadriceps}} max="100"> {{engagement.Quadriceps}}% </progress>
                     <br>
                     <p class="muscle">Glutes</p>
-                    <progress id="Glutes" value="6" max="7"> 32% </progress>
+                    <progress id="Glutes" value={{engagement.Glutes}} max="100"> </progress>
                     <br>
                     <p class="muscle">Calves</p>
-                    <progress id="Calves" value="2" max="7"> 32% </progress>
+                    <progress id="Calves" value={{engagement.Calves}} max="100">  </progress>
                     <br>
                     <p class="muscle">Biceps</p>
-                    <progress id="Biceps" value="3" max="7"> 32% </progress>
+                    <progress id="Biceps" value={{engagement.Biceps}} max="100"> </progress>
                     <br>
                     <p class="muscle">Triceps</p>
-                    <progress id="Triceps" value="3" max="7"> 32% </progress>
+                    <progress id="Triceps" value={{engagement.Triceps}} max="100"> </progress>
                     <br>
                     <p class="muscle">Shoulders</p>
-                    <progress id="Shoulders" value="2" max="7"> 32% </progress>
+                    <progress id="Shoulders" value={{engagement.Shoulders}} max="100"> </progress>
                     <br>
                     <p class="muscle">Back</p>
-                    <progress id="Back" value="4" max="7"> 32% </progress>
+                    <progress id="Back" value={{engagement.Back}} max="100"> </progress>
                     <br>
                     <p class="muscle">Abs</p>
-                    <progress id="Abs" value="3" max="7"> 32% </progress>
+                    <progress id="Abs" value={engagement.Abs}} max="100"> </progress>
                     <br>
                 </div>
             </div>
         </div>
 
-
-        <!--
-        <div class="row">
-            <div class = "muscle_engagement_container">
-                <p class="title margin">Muscle Engagement</p>
-                <p class="week">Week of Feb 20 - 27</p>
-                <p class="muscle">Quads</p>
-                <progress id="Quads" value="5" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Glutes</p>
-                <progress id="Glutes" value="6" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Calves</p>
-                <progress id="Calves" value="2" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Biceps</p>
-                <progress id="Biceps" value="3" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Triceps</p>
-                <progress id="Triceps" value="3" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Shoulders</p>
-                <progress id="Shoulders" value="2" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Back</p>
-                <progress id="Back" value="4" max="7"> 32% </progress>
-                <br>
-                <p class="muscle">Abs</p>
-                <progress id="Abs" value="3" max="7"> 32% </progress>
-                <br>
-            </div>
-            <div class = "welcome_container">
-                <img class="people" src="Images/fitness-people.png">
-                <p class="welcome_title">Welcome back, <b>Kumiko!</b></p>
-                <p class="subtitle">This is your progress since Jan 1, 2020:</p>
-                <div class="box_container">
-                    <div class = box>
-                        <p><b>28</b><br>workouts<br>completed</p>
-                    </div>
-                    <div class = box>
-                        <p><b>125 lb</b><br>current<br>weight</p>
-                    </div>
-                    <div class = box>
-                        <p><b>300 h</b><br>worked<br>out</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="heading">
-                <p class = "title">Previous Workout(s)</p>
-                <select name="select_musclegroup" aria-invalid="false">
-                    <option value="All">All</option>
-                    <option value="Lower">Lower</option>
-                    <option value="Upper">Upper</option>
-                </select>
-            </div>
-
-            <div class="container">
-                <div class = "prev_workout_container ">
-                    <div class="date">
-                        <p><b>20</b><br>Feb</p>
-                    </div>
-                    <p class = "subtitle2">LOWER BODY & ABS</p>
-                    <p class = "desc">6 exercises completed</p>
-                </div>
-                <div class = "prev_workout_container pad">
-                    <div class="date">
-                        <p><b>17</b><br>Feb</p>
-                    </div>
-                    <p class = "subtitle2">LOWER BODY</p>
-                    <p class = "desc">5 exercises completed</p>
-                </div>
-                <div class = "prev_workout_container">
-                    <div class="date">
-                        <p><b>14</b><br>Feb</p>
-                    </div>
-                    <p class = "subtitle2">LOWER BODY & ABS</p>
-                    <p class = "desc">6 exercises completed</p>
-                </div>
-            </div>
-
-            <div class="heading">
-                <p class = "title">My Workouts</p>
-                <a href="workouts.html">Show all</a>
-            </div>
-            <div class = "workouts_container">
-                <div class="measurements">
-                    <p>5k</p>
-                    <p>3k</p>
-                    <p>1k</p>
-                    <p>0</p>
-                </div>
-                <div class=graph_container>
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                    <div class="bar4"></div>
-                    <div class="bar5"></div>
-                </div>
-                <p class="muscle_group">Chest & Biceps</p>
-                <p class="day">Tues, Feb 25</p>
-                <img class="diagram" src="Images/Muscles.svg">
-                <a class="start" href="currentworkout.html">START</a>
-                <p class="completed"><b>5</b><br>times<br>completed</p>
-            </div>
-        </div>
-    </div>
-     -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'fitnessing/js/dashboard.js' %}"></script>
 </body>

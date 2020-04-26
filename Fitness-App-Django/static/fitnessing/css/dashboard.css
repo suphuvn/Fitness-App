@@ -21,6 +21,12 @@ body {
     text-align: left;
 }
 
+.empty_workouts {
+    font-size: 20px;
+    font-weight: bold;
+    color: #706DF9;
+}
+
 /* ----------------------- Home Page ----------------------- */
 /* ----------------------- Sidebar ----------------------- */
 .sidenav {
@@ -324,28 +330,28 @@ select {
 .bar1 {
     background-color: #4C49EA;
     border-radius: 0 0 0 20px;
-    height: 30%;
+    height: 100%;
 }
 
 .bar2 {
     background-color: #706DF9;
-    height: 50%;
+    height: 100%;
 
 }
 .bar3 {
     background-color: #7272FF;
-    height: 70%;
+    height: 100%;
 }
 
 .bar4 {
     background-color: #2F2BEB;
-    height: 60%;
+    height: 100%;
 }
 
 .bar5 {
     background-color: #4C49EA;
     border-radius: 0px 0 20px 0;
-    height: 55%;
+    height: 100%;
 }
 
 .measurements {
