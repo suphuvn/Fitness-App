@@ -120,7 +120,7 @@
                     {% for workout in filtered_workouts %}
                     {% if forloop.counter0 < 3 %}
                     <div class="col-sm-4 px-0">
-                        <div class = "prev_workout_container" onclick="location.href='currentworkout.html';">
+                        <div class = "prev_workout_container" onclick="location.href='/current-workout';">
                             <div class="date">
                                 <p class="m-0"><b>{{workout.last_date_completed|date:'d'}}</b><br>{{workout.last_date_completed|date:'M'}}</p>
                             </div>
@@ -157,7 +157,7 @@
                                 <img class="diagram" src="{% static 'fitnessing/images/Muscles.svg' %}">
                             </div>
                             <div class="col-sm-6">
-                                <a class="start" href="currentworkout.html">START</a>
+                                <a class="start" href="/current-workout">START</a>
                                 <p class="completed"><b>{{first_workout.times_completed}}</b><br>times<br>completed</p>
                             </div>
                         </div>

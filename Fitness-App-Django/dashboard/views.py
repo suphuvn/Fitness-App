@@ -95,6 +95,10 @@ def stats_view(request):
     return render(request, 'stats.html', {})
 
 @login_required
+def current_workout_view(request):
+    return render(request, 'currentworkout.html', {})
+
+@login_required
 def settings_view(request):
     return render(request, 'settings.html', {})
 
