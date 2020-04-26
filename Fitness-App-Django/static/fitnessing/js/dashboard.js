@@ -6,6 +6,7 @@ var deleteSetButton = document.querySelector("#delete_button");
 var addSetButton = document.querySelector("#add_button");
 var deleteExerciseButton = document.querySelector(".delete_button");
 var closeModalButton = document.querySelector(".close");
+var applyButton = document.querySelector('.apply_button');
 
 function setBackground(element) {
     "use strict";
@@ -150,9 +151,29 @@ function addExercise(event) {
     
 }
 
+function filterWorkout(event) {
+    var muscles = [];
+    for (var i = 0; i < filters.length; i++) {
+        if (filters[i].classList.contains("selected")) {
+            muscles.push(filters[i].value);
+            filters[i].classList.remove("selected");
+        }
+    }
+    let data = {
+        muscle: muscles
+    };
+    if (muscles.length == 0) {
+        window.location.href = "/workouts";
+    } else {
+        window.location.href = "?" + $.param(data, true);
+    }
+}
+
 filters.forEach(function (filter) {
     filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
 });
+
+applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
 
 complete_button.forEach(function (button) {
     button.addEventListener("click", function () { markComplete(event, button.parentNode.parentNode.parentNode); }, true);

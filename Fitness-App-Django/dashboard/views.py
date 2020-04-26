@@ -45,7 +45,22 @@ def workouts_view(request):
 	for workout in workouts:
 		for exercise in Exercise.objects.filter(workout=workout):
 			exercises.append(exercise)
+	
+	if "muscle" in request.GET:
+		search = request.GET.getlist('muscle')
+		workouts = []
 
+		for exercise in exercises:
+			contains = True
+
+			for muscle in search:
+				if muscle not in exercise.exercise_type.muscles_worked:
+					contains = False
+					break
+
+			if contains and exercise.workout not in workouts:
+				workouts.append(exercise.workout)
+	
 	return render(request, 'workouts.html', {'workouts':workouts, 'exercises':exercises})
 
 @login_required
@@ -60,4 +75,18 @@ def settings_view(request):
 def create_workout_view(request):
 	exercises = ExerciseType.objects.all()
 
+	if "muscle" in request.GET:
+		search = request.GET.getlist('muscle')
+		exercises = []
+		for exercise in ExerciseType.objects.all():
+			contains = True
+
+			for muscle in search:
+				if muscle not in exercise.muscles_worked:
+					contains = False
+					break
+
+			if contains and exercise not in exercises:
+				exercises.append(exercise)
+	 
 	return render(request, 'createworkout.html', {'exercises':exercises})
