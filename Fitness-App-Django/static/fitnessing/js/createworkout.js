@@ -14,6 +14,14 @@ $(document).ready(function(){
     $("#detailsModal").on('show.bs.modal', function(){
         $("#video").attr('src', url);
     });
+
+    $("input[type='checkbox']").on('change', function(){
+        if ($(this).is(':checked')){
+            $('.delete_button').css({ opacity: 1 });
+        } else {
+            $('.delete_button').css({ opacity: 0.5 });
+        }
+    });
 });
 
 $(document).on('change','.reps', function(){
