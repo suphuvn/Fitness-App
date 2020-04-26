@@ -173,8 +173,6 @@ filters.forEach(function (filter) {
     filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
 });
 
-applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
-
 complete_button.forEach(function (button) {
     button.addEventListener("click", function () { markComplete(event, button.parentNode.parentNode.parentNode); }, true);
 });
@@ -183,6 +181,7 @@ sets.forEach(function (set) {
     set.addEventListener("click", function () { completed(event, set); }, true);
 });
 
+applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
 deleteSetButton.addEventListener("click", function () { deleteSet(event); }, true);
 addSetButton.addEventListener("click", function () { addSet(event, add_button); }, true);
 deleteExerciseButton.addEventListener("click", function() {deleteExercise(event); }, true)
