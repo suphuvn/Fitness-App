@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class = "box">
-                                    <p><b>{{ workouts.count }}</b><br>workouts<br>completed</p>
+                                    <p><b>{{ workouts_completed }}</b><br>workouts<br>completed</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -100,21 +100,24 @@
                         <p class = "title">Previous Workout(s)</p>
                     </div>
                     <div class="col-sm-5 text-right">
-                        <select name="select_musclegroup" aria-invalid="false">
-                            <option value="All">All</option>
-                            <option value="Lower">Lower</option>
-                            <option value="Upper">Upper</option>
-                        </select>
+                        <form method="get" id="workout_filter">
+                            <select name="musclegroup" aria-invalid="false" onchange="this.form.submit();">
+                                <option value="">Filter by Muscle</option>
+                                <option value="All">All</option>
+                                <option value="Lower">Lower</option>
+                                <option value="Upper">Upper</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
                 <!-- Previous Workout Container -->
                 <div class="row">
-                    {% if workouts.count == 0 %}
+                    {% if workouts|length == 0 or filtered_workouts|length == 0 %}
                     <div class="col-sm-12 px-0 ml-3">
                         <p class="empty_workouts">You have no workouts added yet. Go on and add your first one!</p>
                     </div>
                     {% endif %}
-                    {% for workout in workouts %}
+                    {% for workout in filtered_workouts %}
                     {% if forloop.counter0 < 3 %}
                     <div class="col-sm-4 px-0">
                         <div class = "prev_workout_container" onclick="location.href='currentworkout.html';">
@@ -162,9 +165,9 @@
                     <!-- Graph -->
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
-                            {% for exercise in workouts.exercise_set %}
-                            {% if exercise.workout == first_workout %}
-                            {% widthratio exercise.weight_lifted 5000 100 as percent %}
+                            {% for exercise in first_workout.exercise_set.all %}
+                            {% widthratio exercise.weight_lifted 1 exercise.workout.times_completed as weight %}
+                            {% widthratio weight 5000 100 as percent %}
                             {% if forloop.counter0 == 0 %}
                             <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
                             {% endif %}
@@ -182,7 +185,6 @@
                             {% endif %}
                             {% if forloop.counter0 == 5 %}
                             <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
-                            {% endif %}
                             {% endif %}
                             {% endfor %}
                         </div>
