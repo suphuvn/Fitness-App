@@ -63,3 +63,4 @@ class Workout(models.Model):
 	avg_time_completed = models.DurationField(default=timedelta(minutes=0))
 	total_time = models.DurationField(default=timedelta(minutes=0))
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	weight_lifted = models.DecimalField(max_digits=5, decimal_places=1, default=0)

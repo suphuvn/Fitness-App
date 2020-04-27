@@ -95,7 +95,14 @@ def workouts_view(request):
 
 @login_required
 def stats_view(request):
-    return render(request, 'stats.html', {})
+	workouts = Workout.objects.filter(user=request.user)
+
+	exercises = []
+	for workout in workouts:
+		for exercise in Exercise.objects.filter(workout=workout):
+			exercises.append(exercise)
+
+	return render(request, 'stats.html', {'workouts':workouts, 'exercises':exercises})
 
 @login_required
 def current_workout_view(request, id):
@@ -107,13 +114,15 @@ def current_workout_view(request, id):
 		current_workout.last_date_completed = datetime.today()
 		current_workout.total_time = current_workout.total_time + timedelta(seconds=time)
 		avg_time = current_workout.total_time.total_seconds()/current_workout.times_completed
+		current_workout.avg_time_completed = avg_time
 
 		for exercise in current_workout.exercise_set.all():
 			weight = 0
 			for i in range(exercise.num_sets):
-				weight += exercise.num_reps * exercise.weight
+				weight += exercise.num_reps * exercise.weight * current_workout
 			
-			exercise.weight_lifted = weight
+			exercise.weight_lifted += weight
+			current_workout.weight_lifed += weight
 			exercise.save()
 
 		current_workout.save()

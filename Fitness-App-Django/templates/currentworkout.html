@@ -93,7 +93,17 @@
                 {% for exercise in current_workout.exercise_set.all %}
                 <div class="col-sm-4">
                     <!-- Exercise 1 -->
+                    {% if forloop.counter|divisibleby:2 %}
+                    <div class="exercise_container color5">
+                    {% elif forloop.counter|divisibleby:3 %}
+                    <div class="exercise_container color4">
+                    {% elif forloop.counter|divisibleby:4 %}
+                    <div class="exercise_container color3">
+                    {% elif forloop.counter|divisibleby:5 %}
+                    <div class="exercise_container color2">
+                    {% else %}
                     <div class="exercise_container color1">
+                    {% endif %}
                         <div class="row px-4 pt-4 pb-2">
                             <div class="col-sm-12">
                                 <p class="exercise_title m-0">{{exercise.exercise_type.get_exercise_name}}</p>
