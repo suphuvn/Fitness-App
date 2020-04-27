@@ -74,7 +74,7 @@ function deleteSet(event, button) {
     sets[sets.length-1].parentNode.removeChild(sets[sets.length-1]);
 }
 
- function addExercise(event, button) {
+function addExercise(event, button) {
     var name = button.parentNode.parentNode.querySelector(".library_exercise_title").innerHTML;
     var exerciseBox = document.querySelector(".exercise_box");
     var exercises = document.querySelectorAll(".exercise_sets");
@@ -161,3 +161,44 @@ function deleteSet(event, button) {
  addButton.forEach(function (button) {
     button.addEventListener("click", function () { addExercise(event, button) }, true);
 });
+
+function createWorkout() {
+    let eSets = $('.exercise_box .exercise_sets');
+
+    workout = {
+        'name': $('#workout_name')[0].value,
+        'exercises': []
+    };
+    
+    $.each(eSets, function(index, value) {
+        exercise = {};
+
+        let name = $(value).find('.exercise_name.noselect').text();
+
+        let sets_html = $(value).find('.row.set_container');
+
+        let numSets = sets_html.length;
+
+        exercise['type'] = name;
+        exercise['numSets'] = numSets;
+        exercise['reps'] = 0;
+        exercise['weight'] = 0;
+
+        if (numSets > 0) {
+            let repsClass = 'reps' + index;
+            let weightClass = 'weight' + index;
+
+            let reps = $(sets_html[0]).find('input.form-control.' + repsClass)[0].value;
+            let weight = $(sets_html[0]).find('input.form-control.' + weightClass)[0].value;
+
+            exercise['reps'] = reps;
+            exercise['weight'] = weight;
+        }
+
+        workout.exercises.push(exercise);
+    });
+
+    $.post("/create-workout/", {'workout': JSON.stringify(workout)}, function (response) {
+        window.location.href = '/';
+    });
+}

@@ -7,6 +7,8 @@ from collections import Counter
 from django.http import HttpResponseRedirect
 from datetime import timedelta, datetime
 from decimal import Decimal
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 @login_required
 def dashboard_view(request):
@@ -135,8 +137,31 @@ def settings_view(request):
     return render(request, 'settings.html', {})
 
 @login_required
+@csrf_exempt
 def create_workout_view(request):
 	exercises = ExerciseType.objects.all()
+
+	print(request.POST.get('workout'))
+
+	if 'workout' in request.POST:
+		workout_data = json.loads(request.POST.get('workout'))
+
+		workout = Workout(name=workout_data['name'], user=request.user, times_completed=0)
+		workout.save()
+
+		total_weight_lifted = 0
+
+		for exercise in workout_data['exercises']:
+			exercise_type = ExerciseType.objects.filter(name=exercise['type'].replace(' ', '-')).first()
+
+			weight_lifted = int(exercise['reps']) * int(exercise['numSets']) * float(exercise['weight'])
+			total_weight_lifted += weight_lifted
+			
+			new_exercise = Exercise(exercise_type=exercise_type, num_reps=exercise['reps'], num_sets=exercise['numSets'], weight=exercise['weight'], weight_lifted=weight_lifted, workout=workout)
+			new_exercise.save()
+
+		workout.weight_lifted = total_weight_lifted
+		workout.save(update_fields=['weight_lifted'])
 
 	if "muscle" in request.GET:
 		search = request.GET.getlist('muscle')

@@ -39,7 +39,7 @@ class ExerciseType(models.Model):
 		('Triceps', 'Triceps'),
 		('Upper Back', 'Upper Back'),
 		('Lower Back', 'Lower Back')
-		)
+	)
 	name = models.CharField(max_length=120, choices = TYPES, default = 'bicep-curls')
 	muscles_worked = MultiSelectField(max_length=120, choices = MUSCLES, default = 'biceps')
 	video_link = models.URLField(max_length=500)
