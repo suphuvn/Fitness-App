@@ -169,6 +169,23 @@ function filterWorkout(event) {
     }
 }
 
+function getInspirationalQuote() {
+    let settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://type.fit/api/quotes",
+        "method": "GET"
+    }
+
+    $.ajax(settings).done(function (response) {
+        let data = JSON.parse(response);
+        let quoteNum = Math.floor(Math.random() * data.length);
+        let chosenQuote = 'Your quote: ' + data[quoteNum].text + ' - ' + data[quoteNum].author;
+
+        $('#quote-div').text(chosenQuote);        
+    });
+}
+
 filters.forEach(function (filter) {
     filter.addEventListener("click", function () { toggleSelected(event, filter); }, true);
 });
@@ -180,6 +197,8 @@ complete_button.forEach(function (button) {
 sets.forEach(function (set) {
     set.addEventListener("click", function () { completed(event, set); }, true);
 });
+
+getInspirationalQuote();
 
 applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
 deleteSetButton.addEventListener("click", function () { deleteSet(event); }, true);
