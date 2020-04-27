@@ -124,7 +124,7 @@ function getInspirationalQuote() {
     $.ajax(settings).done(function (response) {
         let data = JSON.parse(response);
         let quoteNum = Math.floor(Math.random() * data.length);
-        let chosenQuote = 'Your quote: ' + data[quoteNum].text + ' - ' + data[quoteNum].author;
+        let chosenQuote = data[quoteNum].text + ' - ' + data[quoteNum].author;
 
         $('#quote-div').text(chosenQuote);        
     });

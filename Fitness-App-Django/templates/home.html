@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div id="quote-div" class="row mx-4 mt-4">
+        <div id="quote-div" class="row mx-4 mt-4 pl-4">
             
         </div>
 
@@ -124,7 +124,7 @@
                     {% for workout in filtered_workouts %}
                     {% if forloop.counter0 < 3 %}
                     <div class="col-sm-4 px-0">
-                        <div class = "prev_workout_container" onclick="location.href='/current-workout';">
+                        <div class = "prev_workout_container" onclick="location.href='/current-workout/' + {{ workout.id }} " >
                             <div class="date">
                                 <p class="m-0"><b>{{workout.last_date_completed|date:'d'}}</b><br>{{workout.last_date_completed|date:'M'}}</p>
                             </div>
@@ -161,7 +161,7 @@
                                 <img class="diagram" src="{% static 'fitnessing/images/Muscles.svg' %}">
                             </div>
                             <div class="col-sm-6">
-                                <a class="start" href="/current-workout">START</a>
+                                <div class="start" onclick="location.href='/current-workout/' + {{ first_workout.id }} ">START</div>
                                 <p class="completed"><b>{{first_workout.times_completed}}</b><br>times<br>completed</p>
                             </div>
                         </div>

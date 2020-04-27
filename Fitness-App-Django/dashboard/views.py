@@ -97,7 +97,7 @@ def stats_view(request):
 @login_required
 def current_workout_view(request, id):
 	current_workout = get_object_or_404(Workout, user=request.user, id=id)
-	return render(request, 'currentworkout.html', {'current_workout': current_workout})
+	return render(request, 'currentworkout.html', {'current_workout': current_workout,})
 
 @login_required
 def settings_view(request):

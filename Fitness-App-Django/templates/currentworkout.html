@@ -62,7 +62,7 @@
         <!-- Heading -->
         <div class="row mx-0 pt-4 pl-4 mr-4">
             <div class="col-sm-10">
-                <p class="workouts_title m-0"><b>Legs & Abs</b></p>
+                <p class="workouts_title m-0"><b>{{current_workout.name}}</b></p>
             </div>
             <div class="col-sm-2 text-right pt-2">
                 <a class = "link" href="/workouts">Finish Workout</a>
@@ -86,25 +86,28 @@
         <!-- Exercises -->
         <div class=exercises>
             <div class="row mx-0 pl-4 mr-4">
+                {% for exercise in current_workout.exercise_set.all %}
                 <div class="col-sm-4">
                     <!-- Exercise 1 -->
                     <div class="exercise_container color1">
                         <div class="row px-4 pt-4 pb-2">
                             <div class="col-sm-12">
-                                <p class="exercise_title m-0">Sumo Deadlifts</p>
-                                <p class="exercise_num m-0">1 of 5</p>
+                                <p class="exercise_title m-0">{{exercise.exercise_type.get_exercise_name}}</p>
+                                <p class="exercise_num m-0">{{ forloop.counter }} of {{current_workout.exercise_set.count}}</p>
                             </div>
                         </div>
+                        {% with ''|center:exercise.num_sets as range %}
+                        {% for _ in range %}
                         <div class="row px-4 py-2 set mx-3">
                             <div class="col-sm-3">
-                                <p class="set_title m-0">SET 1</p>
+                                <p class="set_title m-0">SET {{ forloop.counter }}</p>
                             </div>
                             <div class="col-sm-1 check">
 
                             </div>
                             <div class="col-sm-3">
                                 <p class="number m-0">
-                                    5
+                                    {{exercise.num_reps}}
                                 </p>
                                 <p class="small_text m-0">
                                     reps
@@ -115,121 +118,15 @@
                             </div>
                             <div class="col-sm-3">
                                 <p class="number m-0">
-                                    165
+                                    {{exercise.weight}}
                                 </p>
                                 <p class="small_text m-0">
                                     lbs
                                 </p>
                             </div>
                         </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 2</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    5
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    165
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 3</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    5
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    165
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 4</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    5
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    165
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 5</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    5
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    165
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
+                        {% endfor %}
+                        {% endwith %}
                         <div class="row p-4 buttons">
                             <div class="col-sm-12">
                                 <button class="complete">Mark as Complete</button>
@@ -237,425 +134,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <!-- Exercise 2 -->
-                    <div class="exercise_container color2">
-                        <div class="row px-4 pt-4 pb-2">
-                            <div class="col-sm-12">
-                                <p class="exercise_title m-0">Hip Thrusts</p>
-                                <p class="exercise_num m-0">2 of 5</p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 1</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    8
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    320
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 2</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    8
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    320
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 3</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    8
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    320
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="row p-4 buttons">
-                            <div class="col-sm-12">
-                                <button class="complete">Mark as Complete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <!-- Exercise 3 -->
-                    <div class="exercise_container color3">
-                        <div class="row px-4 pt-4 pb-2">
-                            <div class="col-sm-12">
-                                <p class="exercise_title m-0">Leg Press</p>
-                                <p class="exercise_num m-0">3 of 5</p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 1</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    12
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    270
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 2</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    12
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    270
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 3</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    12
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    270
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="row p-4 buttons">
-                            <div class="col-sm-12">
-                                <button class="complete">Mark as Complete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <!-- Exercise 4 -->
-                    <div class="exercise_container color4">
-                        <div class="row px-4 pt-4 pb-2">
-                            <div class="col-sm-12">
-                                <p class="exercise_title m-0">Lying Leg Curls</p>
-                                <p class="exercise_num m-0">4 of 5</p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 1</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    110
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 2</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    110
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 3</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    110
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="row p-4 buttons">
-                            <div class="col-sm-12">
-                                <button class="complete">Mark as Complete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <!-- Exercise 5 -->
-                    <div class="exercise_container color5">
-                        <div class="row px-4 pt-4 pb-2">
-                            <div class="col-sm-12">
-                                <p class="exercise_title m-0">Cable Pullthroughs</p>
-                                <p class="exercise_num m-0">5 of 5</p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 1</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    72.5
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 2</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    72.5
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 3</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    72.5
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row px-4 py-2 set mx-3">
-                            <div class="col-sm-3">
-                                <p class="set_title m-0">SET 4</p>
-                            </div>
-                            <div class="col-sm-1 check">
-
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    10
-                                </p>
-                                <p class="small_text m-0">
-                                    reps
-                                </p>
-                            </div>
-                            <div class="col-sm-1">
-                                <p class="small_text">*</p>
-                            </div>
-                            <div class="col-sm-3">
-                                <p class="number m-0">
-                                    72.5
-                                </p>
-                                <p class="small_text m-0">
-                                    lbs
-                                </p>
-                            </div>
-                        </div>
-                    
-                        <div class="row p-4 buttons">
-                            <div class="col-sm-12">
-                                <button class="complete">Mark as Complete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         

@@ -236,6 +236,11 @@ body {
     width: auto;
 }
 
+.quote_div {
+    font-weight: bold;
+    color: #4C49EA;
+}
+
 /* ----------------------- Previous Workouts Section ----------------------- */
 
 .prev_workout_container {
@@ -388,6 +393,7 @@ select {
     padding: 12px 20px 12px 20px;
     border-radius: 5px;
     margin: 40px 0 20px 20px;
+    cursor: pointer;
 }
 
 .start:hover {
