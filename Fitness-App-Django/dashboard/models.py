@@ -51,8 +51,8 @@ class Exercise(models.Model):
 	exercise_type = models.ForeignKey(ExerciseType, on_delete=models.CASCADE)
 	num_reps = models.IntegerField()
 	num_sets = models.IntegerField()
-	weight_lifted = models.DecimalField(max_digits=5, decimal_places=1)
-	weight = models.DecimalField(max_digits=5, decimal_places=1)
+	weight_lifted = models.FloatField()
+	weight = models.FloatField()
 	workout = models.ForeignKey('Workout', on_delete=models.CASCADE)
 
 class Workout(models.Model):
@@ -63,4 +63,4 @@ class Workout(models.Model):
 	avg_time_completed = models.DurationField(default=timedelta(minutes=0))
 	total_time = models.DurationField(default=timedelta(minutes=0))
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	weight_lifted = models.DecimalField(max_digits=5, decimal_places=1, default=0)
+	weight_lifted = models.FloatField()
