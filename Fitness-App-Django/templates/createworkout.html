@@ -51,17 +51,17 @@
                         <div class="col-sm-12 pb-4">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p class="filter_group_text">Muscle Group</p>        
+                                    <p class="filter_group_text">Muscle Group</p>
                                 </div>
                             </div>
-                                
+
                             <div class="filter_button_container">
                                 <div class="row p-2 mt-4">
                                     <div class="col-sm-4">
                                         <button class="filter_button" value="Abs">Abs</button>
                                     </div>
                                     <div class="col-sm-4">
-                                        <button class="filter_button" value="Back">Back</button>                
+                                        <button class="filter_button" value="Back">Back</button>
                                     </div>
                                     <div class="col-sm-4">
                                         <button class="filter_button" value="Biceps">Biceps</button>
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="row p-2">
                                     <div class="col-sm-4">
-                                        <button class="filter_button" value="Calves">Calves</button>                
+                                        <button class="filter_button" value="Calves">Calves</button>
                                     </div>
                                     <div class="col-sm-4">
                                         <button class="filter_button" value="Chest">Chest</button>
@@ -130,10 +130,10 @@
                     <input class="searchBox" type="text" placeholder="Search">
                 </div>
             </div>
-            
+
             <div class="col-sm-4 text-right pt-2">
                 <a href="settings.html"><img class="settings" src="{% static 'fitnessing/images/Settings_Icon.svg' %}"></a>
-            
+
                 <div class="profile align-middle">
                     <img class="userIcon" src="{% static 'fitnessing/images/Placeholder_User_Icon.png' %}">
                     <button class="name">{{user.get_short_name}}</button>
@@ -152,7 +152,7 @@
                 <p class="workouts_title m-0"><b>Create a Workout</b></p>
             </div>
             <div class="col-sm-2 text-right pt-2">
-                <a class = "link" href="workouts.html">Save Workout</a>
+                <a class = "link" href="/workouts">Save Workout</a>
             </div>
         </div>
 
@@ -338,10 +338,10 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{% static 'fitnessing/js/dashboard.js' %}"></script>
     <script type="text/javascript" src="{% static 'fitnessing/js/createworkout.js' %}"></script>
 </body>
-   
+
 </html>
