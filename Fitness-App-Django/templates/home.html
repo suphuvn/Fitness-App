@@ -170,8 +170,7 @@
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
                             {% for exercise in first_workout.exercise_set.all %}
-                                {% widthratio exercise.weight_lifted 1 exercise.workout.times_completed as weight %}
-                                {% widthratio weight 2.205 1 as kg %}
+                                {% widthratio exercise.weight_lifted 2.205 1 as kg %}
                                 {% widthratio kg 5000 100 as percent %}
                                 {% if percent|add:0 > 100 %}
                                     {% with 100 as cap %}
