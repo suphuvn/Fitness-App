@@ -760,7 +760,7 @@ progress[value]::-webkit-progress-value {
     background-color: #2F2BEB;
     border: none;
     border-radius: 5px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .delete_button:active {

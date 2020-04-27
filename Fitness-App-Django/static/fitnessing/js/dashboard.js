@@ -2,8 +2,7 @@
 var filters = document.querySelectorAll(".filter_button");
 var complete_button = document.querySelectorAll(".complete");
 var sets = document.querySelectorAll(".set");
-var deleteSetButton = document.querySelector("#delete_button");
-var addSetButton = document.querySelector("#add_button");
+
 var deleteExerciseButton = document.querySelector(".delete_button");
 var closeModalButton = document.querySelector(".close");
 var applyButton = document.querySelector('.apply_button');
@@ -81,74 +80,19 @@ function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function addSet(event, button) {
-    var container = document.querySelector(".sets_container");
-    var sets = document.querySelectorAll(".set_container");
-    var set_id = sets.length;
-
-    var set = document.createElement("div");
-    set.setAttribute('id', set_id);
-    set.setAttribute('class', "row set_container");
-    var html = 
-    `<div class="col-sm-3"> 
-        <p class="set_num">SET ` + (set_id + 1) + `</p> 
-    </div> 
-    <div class="col-sm-3 text-center">
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="number" min="0" value="" id="reps" class="form-control reps"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <label for="reps" class="set_subtitle">reps</label>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3 text-center">
-        <p class="set_subtitle">*</p>
-    </div>
-    <div class="col-sm-3 text-center">
-        <div class="row">
-            <div class="col-sm-12">
-                <input type="number" min="0" value="" id="weight" class="form-control weight"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <label for="weight" class="set_subtitle">lbs</label>
-            </div>
-        </div>
-    </div>`;
-    set.innerHTML = html;
-    if (set_id == 0) {
-        insertAfter(set, document.querySelector(".exercise_name").parentNode.parentNode);
-    } else {
-        insertAfter(set, sets[sets.length-1]);
-    }
-}
-
-function deleteSet(event) {
-    var sets = document.querySelectorAll(".set_container");
-    sets[sets.length-1].parentNode.removeChild(sets[sets.length-1]);
-}
-
 function deleteExercise(event) {
     var exercises = document.getElementsByName("exercise_checkbox");
+    var remove = []
     
     for (var i = 0; i < exercises.length; i++) {
         if (exercises[i].checked) {
-            var id = exercises[i].id;
-            jQuery(function($) {
-                $('label[for=' + id + ']').remove();
-            }); 
-            exercises[i].parentNode.removeChild(exercises[i]);
+            remove.push(exercises[i]);
        }
     }
-}
-
-function addExercise(event) {
     
+    for (var i = 0; i < remove.length; i++) {
+        remove[i].parentNode.remove();
+    }
 }
 
 function filterWorkout(event) {
@@ -182,8 +126,7 @@ sets.forEach(function (set) {
 });
 
 applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
-deleteSetButton.addEventListener("click", function () { deleteSet(event); }, true);
-addSetButton.addEventListener("click", function () { addSet(event, add_button); }, true);
 deleteExerciseButton.addEventListener("click", function() {deleteExercise(event); }, true)
+
 
 getURL();
