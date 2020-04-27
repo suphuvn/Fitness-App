@@ -3,7 +3,6 @@ var filters = document.querySelectorAll(".filter_button");
 var complete_button = document.querySelectorAll(".complete");
 var sets = document.querySelectorAll(".set");
 
-var deleteExerciseButton = document.querySelector(".delete_button");
 var closeModalButton = document.querySelector(".close");
 var applyButton = document.querySelector('.apply_button');
 
@@ -80,20 +79,7 @@ function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function deleteExercise(event) {
-    var exercises = document.getElementsByName("exercise_checkbox");
-    var remove = []
-    
-    for (var i = 0; i < exercises.length; i++) {
-        if (exercises[i].checked) {
-            remove.push(exercises[i]);
-       }
-    }
-    
-    for (var i = 0; i < remove.length; i++) {
-        remove[i].parentNode.remove();
-    }
-}
+
 
 function filterWorkout(event) {
     var muscles = [];
@@ -145,7 +131,5 @@ sets.forEach(function (set) {
 getInspirationalQuote();
 
 applyButton.addEventListener("click", function() {filterWorkout(event); }, true)
-deleteExerciseButton.addEventListener("click", function() {deleteExercise(event); }, true)
-
 
 getURL();

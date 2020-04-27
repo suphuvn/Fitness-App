@@ -1,4 +1,5 @@
 var addButton = document.querySelectorAll('.add_button');
+var deleteExerciseButton = document.querySelector("#delete_button");
 
 $(document).ready(function(){
     /* Get iframe src attribute value i.e. YouTube video url
@@ -202,3 +203,20 @@ function createWorkout() {
         window.location.href = '/';
     });
 }
+
+function deleteExercise(event) {
+    var exercises = document.getElementsByName("exercise_checkbox");
+    var remove = [];
+    
+    for (var i = 0; i < exercises.length; i++) {
+        if (exercises[i].checked) {
+            remove.push(exercises[i]);
+       }
+    }
+    
+    for (var i = 0; i < remove.length; i++) {
+        remove[i].parentNode.remove();
+    }
+}
+
+deleteExerciseButton.addEventListener("click", function() {deleteExercise(event); }, true)
