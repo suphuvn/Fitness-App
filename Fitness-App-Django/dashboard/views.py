@@ -28,8 +28,8 @@ def dashboard_view(request):
 		hoursWorked += workout.total_time # Calculate total time
 		workoutsCompleted += workout.times_completed # Calculate total workouts completed
 		for exercise in Exercise.objects.filter(workout=workout): 
-			weightLifted += (exercise.weight_lifted/Decimal(2.205)) * workout.times_completed # Calculate weight lifted
 			exercises.append(exercise) # Add exercises which belong to workouts of user
+		weightLifted += workout.weight_lifted
 
 	filtered_workouts = workouts
 
@@ -116,15 +116,15 @@ def current_workout_view(request, id):
 		current_workout.last_date_completed = datetime.today()
 		current_workout.total_time = current_workout.total_time + timedelta(seconds=time)
 		avg_time = current_workout.total_time.total_seconds()/current_workout.times_completed
-		current_workout.avg_time_completed = avg_time
+		current_workout.avg_time_completed = timedelta(seconds=avg_time)
 
 		for exercise in current_workout.exercise_set.all():
 			weight = 0
 			for i in range(exercise.num_sets):
-				weight += exercise.num_reps * exercise.weight * current_workout
+				weight += float(exercise.num_reps) * exercise.weight
 			
 			exercise.weight_lifted += weight
-			current_workout.weight_lifed += weight
+			current_workout.weight_lifted = float(current_workout.weight_lifted) + float(weight)/float(2.205)
 			exercise.save()
 
 		current_workout.save()
