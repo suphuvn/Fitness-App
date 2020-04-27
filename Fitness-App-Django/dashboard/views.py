@@ -149,19 +149,14 @@ def create_workout_view(request):
 		workout = Workout(name=workout_data['name'], user=request.user, times_completed=0)
 		workout.save()
 
-		total_weight_lifted = 0
-
 		for exercise in workout_data['exercises']:
 			exercise_type = ExerciseType.objects.filter(name=exercise['type'].replace(' ', '-')).first()
-
-			weight_lifted = int(exercise['reps']) * int(exercise['numSets']) * float(exercise['weight'])
-			total_weight_lifted += weight_lifted
 			
-			new_exercise = Exercise(exercise_type=exercise_type, num_reps=exercise['reps'], num_sets=exercise['numSets'], weight=exercise['weight'], weight_lifted=weight_lifted, workout=workout)
+			new_exercise = Exercise(exercise_type=exercise_type, num_reps=exercise['reps'], num_sets=exercise['numSets'], weight=exercise['weight'], weight_lifted=0, workout=workout)
 			new_exercise.save()
 
-		workout.weight_lifted = total_weight_lifted
-		workout.save(update_fields=['weight_lifted'])
+
+		workout.save()
 
 	if "muscle" in request.GET:
 		search = request.GET.getlist('muscle')
