@@ -6,6 +6,7 @@ from .functions import *
 from collections import Counter
 from django.http import HttpResponseRedirect
 from datetime import timedelta, datetime
+from decimal import Decimal
 
 @login_required
 def dashboard_view(request):
@@ -25,7 +26,7 @@ def dashboard_view(request):
 		hoursWorked += workout.total_time # Calculate total time
 		workoutsCompleted += workout.times_completed # Calculate total workouts completed
 		for exercise in Exercise.objects.filter(workout=workout): 
-			weightLifted += exercise.weight_lifted # Calculate weight lifted
+			weightLifted += (exercise.weight_lifted/Decimal(2.205)) * workout.times_completed # Calculate weight lifted
 			exercises.append(exercise) # Add exercises which belong to workouts of user
 
 	filtered_workouts = workouts

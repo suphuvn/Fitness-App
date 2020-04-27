@@ -87,7 +87,7 @@
                                 <img class="diagram" src="{% static 'fitnessing/images/Muscles.svg' %}">
                             </div>
                             <div class="col-sm-6">
-                                <div class="start" onclick="location.href='/current-workout/' + {{ workout.id }} ">START</div>
+                                <div class="start" onclick="location.href='/current-workout/' + {{ first_workout.id }} ">START</div>
                                 <p class="completed"><b>{{workout.times_completed}}</b><br>times<br>completed</p>
                             </div>
                         </div>
@@ -96,27 +96,52 @@
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
                             {% for exercise in exercises %}
-                            {% if exercise.workout == workout %}
-                            {% widthratio exercise.weight_lifted 5000 100 as percent %}
-                            {% if forloop.counter0 == 0 %}
-                            <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 1 %}
-                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 2 %}
-                            <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 3 %}
-                            <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 4 %}
-                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 5 %}
-                            <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% endif %}
+                                {% if exercise.workout == workout %}
+                                    {% widthratio exercise.weight_lifted 1 exercise.workout.times_completed as weight %}
+                                    {% widthratio weight 2.205 1 as kg %}
+                                    {% widthratio kg 5000 100 as percent %} 
+                                    {% if percent|add:0 > 100 %}                           
+                                        {% with 100 as cap %}
+                                            {% if forloop.counter0 == 0 %}
+                                            <div class="col-sm-2 bar1" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                            {% if forloop.counter0 == 1 %}
+                                            <div class="col-sm-2 bar2" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                            {% if forloop.counter0 == 2 %}
+                                            <div class="col-sm-2 bar3" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                            {% if forloop.counter0 == 3 %}
+                                            <div class="col-sm-2 bar4" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                            {% if forloop.counter0 == 4 %}
+                                            <div class="col-sm-2 bar2" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                            {% if forloop.counter0 == 5 %}
+                                            <div class="col-sm-2 bar5" style="height: {{cap}}% !important"></div>
+                                            {% endif %}
+                                        {% endwith %}
+                                    {% else %}
+                                    {% if forloop.counter0 == 0 %}
+                                        <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 1 %}
+                                        <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 2 %}
+                                        <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 3 %}
+                                        <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 4 %}
+                                        <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 5 %}
+                                        <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
                             {% endfor %}
                         </div>
                     </div>

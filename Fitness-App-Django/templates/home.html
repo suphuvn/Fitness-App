@@ -83,7 +83,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class = "box">
-                                    <p><b>{{ weight_lifted }} kg</b><br>weight<br>lifted</p>
+                                    <p><b>{{ weight_lifted|floatformat:0 }} kg</b><br>weight<br>lifted</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -170,28 +170,52 @@
                     <div class="col-sm-6 p-4">
                         <div class="row graph_container">
                             {% for exercise in first_workout.exercise_set.all %}
-                            {% widthratio exercise.weight_lifted 1 exercise.workout.times_completed as weight %}
-                            {% widthratio weight 5000 100 as percent %}
-                            {% if forloop.counter0 == 0 %}
-                            <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 1 %}
-                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 2 %}
-                            <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 3 %}
-                            <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 4 %}
-                            <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
-                            {% endif %}
-                            {% if forloop.counter0 == 5 %}
-                            <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
-                            {% endif %}
+                                {% widthratio exercise.weight_lifted 1 exercise.workout.times_completed as weight %}
+                                {% widthratio weight 2.205 1 as kg %}
+                                {% widthratio kg 5000 100 as percent %}
+                                {% if percent|add:0 > 100 %}
+                                    {% with 100 as cap %}
+                                        {% if forloop.counter0 == 0 %}
+                                        <div class="col-sm-2 bar1" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 1 %}
+                                        <div class="col-sm-2 bar2" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 2 %}
+                                        <div class="col-sm-2 bar3" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 3 %}
+                                        <div class="col-sm-2 bar4" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 4 %}
+                                        <div class="col-sm-2 bar2" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                        {% if forloop.counter0 == 5 %}
+                                        <div class="col-sm-2 bar5" style="height: {{cap}}% !important"></div>
+                                        {% endif %}
+                                    {% endwith %}
+                                {% else %}
+                                    {% if forloop.counter0 == 0 %}
+                                    <div class="col-sm-2 bar1" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                    {% if forloop.counter0 == 1 %}
+                                    <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                    {% if forloop.counter0 == 2 %}
+                                    <div class="col-sm-2 bar3" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                    {% if forloop.counter0 == 3 %}
+                                    <div class="col-sm-2 bar4" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                    {% if forloop.counter0 == 4 %}
+                                    <div class="col-sm-2 bar2" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                    {% if forloop.counter0 == 5 %}
+                                    <div class="col-sm-2 bar5" style="height: {{percent}}% !important"></div>
+                                    {% endif %}
+                                {% endif %}
                             {% endfor %}
-                        </div>
+                       </div>
                     </div>
                     <div class="col-sm-1">
                         <div class="measurements">
