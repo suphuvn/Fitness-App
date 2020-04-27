@@ -7,5 +7,5 @@ urlpatterns = [
 	path('stats/', stats_view),
 	path('settings/', settings_view),
 	path('create-workout/', create_workout_view),
-	path('current-workout/', current_workout_view),
+	path('current-workout/<int:id>/', current_workout_view),
 ]

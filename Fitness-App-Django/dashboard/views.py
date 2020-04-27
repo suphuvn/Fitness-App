@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
 from datetime import *
@@ -95,8 +95,9 @@ def stats_view(request):
     return render(request, 'stats.html', {})
 
 @login_required
-def current_workout_view(request):
-    return render(request, 'currentworkout.html', {})
+def current_workout_view(request, id):
+	current_workout = get_object_or_404(Workout, user=request.user, id=id)
+	return render(request, 'currentworkout.html', {'current_workout': current_workout})
 
 @login_required
 def settings_view(request):
@@ -119,5 +120,5 @@ def create_workout_view(request):
 
 			if contains and exercise not in exercises:
 				exercises.append(exercise)
-	 
+	
 	return render(request, 'createworkout.html', {'exercises':exercises})
