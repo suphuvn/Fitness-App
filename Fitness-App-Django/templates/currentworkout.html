@@ -65,7 +65,11 @@
                 <p class="workouts_title m-0"><b>{{current_workout.name}}</b></p>
             </div>
             <div class="col-sm-2 text-right pt-2">
-                <a class = "link" href="/workouts">Finish Workout</a>
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    <input type="hidden" id="workout_time" name="workout_time" value="">
+                    <input class="link" type="submit" value="Finish Workout">
+                </form>
             </div>
         </div>
         <div class="row mx-0 pl-4 mr-0">

@@ -319,6 +319,8 @@ select {
 .link {
     text-decoration: none;
     color: #4C49EA;
+    border: none;
+    background-color: transparent;
 }
 
 .link:hover {

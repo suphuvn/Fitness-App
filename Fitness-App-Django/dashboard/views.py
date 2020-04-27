@@ -4,6 +4,8 @@ from .models import *
 from datetime import *
 from .functions import *
 from collections import Counter
+from django.http import HttpResponseRedirect
+from datetime import timedelta, datetime
 
 @login_required
 def dashboard_view(request):
@@ -97,6 +99,25 @@ def stats_view(request):
 @login_required
 def current_workout_view(request, id):
 	current_workout = get_object_or_404(Workout, user=request.user, id=id)
+	
+	if (request.method == "POST"):
+		time = get_sec(request.POST.get("workout_time", ""))
+		current_workout.times_completed += 1
+		current_workout.last_date_completed = datetime.today()
+		current_workout.total_time = current_workout.total_time + timedelta(seconds=time)
+		avg_time = current_workout.total_time.total_seconds()/current_workout.times_completed
+
+		for exercise in current_workout.exercise_set.all():
+			weight = 0
+			for i in range(exercise.num_sets):
+				weight += exercise.num_reps * exercise.weight
+			
+			exercise.weight_lifted = weight
+			exercise.save()
+
+		current_workout.save()
+		return HttpResponseRedirect('/workouts/')
+
 	return render(request, 'currentworkout.html', {'current_workout': current_workout,})
 
 @login_required

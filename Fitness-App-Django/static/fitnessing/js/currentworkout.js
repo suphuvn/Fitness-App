@@ -30,3 +30,10 @@ $(document).ready(function () {
     }, msInterval);
 
 });
+
+$('#form').submit(function(e) {
+    workout_time = $('#counter').text();
+    $('input[id=workout_time]').val(workout_time);
+    console.log($('input[id=workout_time]').val());
+    return true;
+});

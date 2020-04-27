@@ -23,3 +23,7 @@ def week_range(date):
     end_date = start_date + timedelta(6)
 
     return (start_date, end_date)
+
+def get_sec(time_str):
+    h, m, s = time_str.split(':')
+    return int(h) * 3600 + int(m) * 60 + int(s)
